@@ -3,24 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/Interface/MainMenuGUI.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/Interface/CustomerGUI.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/Interface/FoodManageGUI.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/imgs/Button-Ok-icon.png</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/imgs/close.png</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/ordersystem/ui_orderMenu.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/ordersystem/Calculation.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/ordersystem/ComplexPassword.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/Interface/LoginGUI.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/ordersystem/TestMain.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/imgs/background3.jpg</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/ordersystem/DataEncryption.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/imgs/backgroud1.jpg</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/ordersystem/DbConnection.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/ordersystem/NetworkingData.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/Interface/EmployeeGUI.java</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/imgs/add.png</file>
-            <file>file:/C:/Users/helen/Documents/NetBeansProjects/OrderSystem/src/Interface/PrintGUI.java</file>
+            <file>file:/C:/Users/helen/Desktop/Wentworth/2022%20Spring/COMP-4960%20SE/FinalProject/src/ordersystem/TestMain.java</file>
+            <file>file:/C:/Users/helen/Desktop/Wentworth/2022%20Spring/COMP-4960%20SE/FinalProject/src/Interface/LoginGUI.java</file>
         </group>
     </open-files>
 </project-private>
