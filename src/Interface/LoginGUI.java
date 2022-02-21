@@ -2,7 +2,10 @@ package Interface;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import ordersystem.EmployeeDB;
 
 public class LoginGUI extends javax.swing.JFrame {
 
@@ -113,16 +116,30 @@ public class LoginGUI extends javax.swing.JFrame {
         password = new String(text_password.getPassword());
         MainMenuGUI menu = new MainMenuGUI();
         
-        if(username.equals("user")&& password.equals("123")){
-            welcome.setVisible(false); //you can't see me!
-            dispose(); //Destroy the JFrame object
-            JOptionPane.showMessageDialog(this,"login sucess!");
-            menu.setVisible(true);        
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Invalid username or password!");
-            welcome.setVisible(false); //you can't see me!
-            dispose(); //Destroy the JFrame object
+        String databaseName = "RestaurantManagementDB";
+    	String dbUserName = "root";
+    	String dbPassword = "KaKIjttmEBwhIzzv";
+        
+        EmployeeDB inputEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
+        
+        try {
+            
+            boolean isEmployee = inputEmp.isEmployee(username, password);
+            System.out.println(isEmployee);
+            if(isEmployee){
+                System.out.println(inputEmp.isEmployee(username, password));
+                welcome.setVisible(false); //you can't see me!
+                //dispose(); //Destroy the JFrame object
+                JOptionPane.showMessageDialog(this,"login sucess!");
+                menu.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Invalid username or password!");
+                welcome.setVisible(false); //you can't see me!
+               // dispose(); //Destroy the JFrame object
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }                                            
 
