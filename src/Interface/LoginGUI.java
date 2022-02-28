@@ -116,9 +116,9 @@ public class LoginGUI extends javax.swing.JFrame {
         password = new String(text_password.getPassword());
         MainMenuGUI menu = new MainMenuGUI();
         
-        String databaseName = "RestaurantManagementDB";
-    	String dbUserName = "root";
-    	String dbPassword = "KaKIjttmEBwhIzzv";
+        String databaseName = "sql5475007";
+    	String dbUserName = "sql5475007";
+    	String dbPassword = "avlj8CSFyF";
         
         EmployeeDB inputEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
         

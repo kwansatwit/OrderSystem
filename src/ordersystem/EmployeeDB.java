@@ -7,12 +7,13 @@ package ordersystem;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
  *
- * @author diaba
+ * @author Ahmed Diab
  */
 public class EmployeeDB {
     
@@ -48,21 +49,21 @@ public class EmployeeDB {
         try {
             // getting the connection
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://34.94.136.83/" + databaseName, username, password);
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
             // creating statements
-            String sql ="Select * from EMPLOYEE where employeeUserName='"+empUserName+"' AND employeePassword='"+empPassword+"'";
+            String sql ="Select * from EMPLOYEE where userName='"+empUserName+"' AND password='"+empPassword+"'";
             st = con.createStatement();
             // execute query
             rs = st.executeQuery(sql);
             // processing  the resultSet
             while (rs.next()) {
-                System.out.println(rs.getString("employeeUserName"));
-                System.out.println(rs.getString("employeePassword"));
+                System.out.println(rs.getString("userName"));
+                System.out.println(rs.getString("password"));
                 System.out.println("----------------");
                 System.out.println("Input Data: ");
                 System.out.println(empUserName);
                 System.out.println(empPassword);
-                if ((empUserName == null ? rs.getString("employeeUserName") == null : empUserName.equals(rs.getString("employeeUserName"))) && (empPassword == null ? rs.getString("employeePassword") == null : empPassword.equals(rs.getString("employeePassword")))){
+                if ((empUserName == null ? rs.getString("userName") == null : empUserName.equals(rs.getString("userName"))) && (empPassword == null ? rs.getString("password") == null : empPassword.equals(rs.getString("password")))){
                     isEmp = true;
                     return isEmp;
                 }
@@ -75,6 +76,44 @@ public class EmployeeDB {
         return isEmp;
     }
     
+    
+    /**
+     * method that add employee to the database.
+     * @param Employee
+     * @throws Exception 
+     */
+    public void addEmployee(Employee employee) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            //con = dataSource.getConnection();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //creating the statement
+            String sql = "insert into EMPLOYEE"
+                    + "(userName,firstName,lastName,password,dateOfBirth,address,phoneNumber,email,position,access)"
+                    + "values(?,?,?,?,?,?,?,?,?,?)";
+            st = con.prepareStatement(sql);
+            
+            // inserting contact data into the database.
+            st.setString(1, employee.getUserName());
+            st.setString(2, employee.getFirstName());
+            st.setString(3, employee.getLastName());
+            st.setString(4, employee.getPassword());
+            st.setString(5, employee.getDateOfBirth());
+            st.setString(6, employee.getAddress());
+            st.setString(7, employee.getPhoneNumber());
+            st.setString(8, employee.getEmail());
+            st.setString(9, employee.getPosition());
+            st.setInt(10, employee.getAccess());
+            st.execute();
+        } finally {
+            // Closing  the connection.
+            close(con, st, null);
+        }
+
+    }
     
     private static void close(Connection con, Statement st, ResultSet rs) throws Exception {
         try {

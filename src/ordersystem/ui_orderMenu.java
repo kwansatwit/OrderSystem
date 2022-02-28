@@ -1,3 +1,5 @@
+package ordersystem;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Toolkit;

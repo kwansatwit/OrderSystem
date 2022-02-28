@@ -1,6 +1,17 @@
 package Interface;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ordersystem.Employee;
+import ordersystem.EmployeeDB;
+
 public class EmployeeGUI extends javax.swing.JFrame {
+    
+    Employee employee = new Employee();
+    String databaseName = "sql5475007";
+    String dbUserName = "sql5475007";
+    String dbPassword = "avlj8CSFyF";
+   // EmployeeDB addEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
 
     public EmployeeGUI() {
         initComponents();
@@ -272,7 +283,49 @@ public class EmployeeGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_addActionPerformed
-        // TODO add your handling code here:
+        
+        EmployeeGUI employeeGUI = new EmployeeGUI();
+        String first_name = firstName.getText();
+        String last_name = lastName.getText();
+        String date_of_birth = brith.getText();
+        String addr = address.getText();
+        String phone_number = phone.getText();
+        String e = email.getText();
+        String pos = position.getText();
+        int acc = Integer.parseInt(access.getText());
+        
+        
+        
+        employee.setFirstName(first_name);
+        employee.setLastName(last_name);
+        employee.setDateOfBirth(date_of_birth);
+        employee.setAddress(addr);
+        employee.setPhoneNumber(phone_number);
+        employee.setEmail(e);
+        employee.setPosition(pos);
+        employee.setAccess(acc);
+        employee.generateUsername();
+        employee.generatePassword();
+        
+        try {
+            EmployeeDB addEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
+            addEmp.addEmployee(employee);
+            System.out.println("The Employee was added to the database successfully");
+            //employeeGUI.setVisible(false);
+            firstName.setText("");
+            lastName.setText("");
+            brith.setText("");
+            address.setText("");
+            phone.setText("");
+            email.setText("");
+            position.setText("");
+            access.setText("");
+            firstName.setText("");
+        } catch (Exception ex) {
+            Logger.getLogger(EmployeeGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_button_addActionPerformed
 
     private void firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameActionPerformed

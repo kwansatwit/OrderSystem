@@ -1,3 +1,5 @@
+package ordersystem;
+
 
 import static java.lang.Character.isDigit;
 import static java.lang.Character.isLowerCase;
@@ -57,7 +59,7 @@ public class ComplexPassword {
      * else: 
      * sent out the error message and return false     * 
      */
-    public Boolean validPassWord() {
+    public Boolean validate() {
          final int SIZE = password.length();
           boolean size = false;
      int countDigi = 0;

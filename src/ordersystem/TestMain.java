@@ -1,4 +1,4 @@
-
+package ordersystem;
 import static java.lang.Character.isUpperCase;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import org.apache.commons.lang3.RandomStringUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,7 +14,7 @@ import java.util.Scanner;
  */
 /**
  *
- * @author Shuk Ha Kwan
+ * @author Shuk Ha Kwan, Ahmed Diab
  * 1/27/2022:
  * Class for testing only
  */
@@ -21,18 +22,18 @@ public class TestMain {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
     	
-    	String databaseName = "RestaurantManagementDB";
-    	String userName = "root";
-    	String password = "KaKIjttmEBwhIzzv";
+    	String databaseName = "sql5475007";
+    	String userName = "sql5475007";
+    	String password = "avlj8CSFyF";
     	
     	
     	DbConnection connection = new DbConnection(databaseName, userName, password);
     	Connection con = connection.openConnection();
     	
 
-        Scanner input =  new Scanner(System.in);
+        /*Scanner input =  new Scanner(System.in);
         ArrayList<Double> amount = new ArrayList<Double>();
-     /*   Calculation cal = new Calculation();
+        Calculation cal = new Calculation();
         double upperbound = 1500;
         Random rand = new Random();
         double r, sum = 0;
@@ -72,18 +73,31 @@ public class TestMain {
         }
         */
      
+        
+        
+        Employee employee = new Employee("ahmed", "diab", "02/05/1997", "122 main st.", "617-765-6464", "ahmed@exm.com", "emp", 0);
+        
+        employee.generateUsername();
+        employee.generatePassword();
+        
+        
+        System.out.println(employee.getUserName());
+        System.out.println(employee.getPassword());
+     
      // testing for the password creator
-      ComplexPassword pw = new ComplexPassword();
+      /*ComplexPassword pw = new ComplexPassword();
       boolean isPw = false;
-      String pws = "";
+      String pws = "";*/
       
-      while(true){
+      
+      
+      /*while(true){
 
          try{
           System.out.print("Enter PW: ");
           pws = input.nextLine();
           pw.setPassword(pws); 
-          pw.validPassWord();
+          pw.validate();
 
           
           
@@ -93,7 +107,7 @@ public class TestMain {
              System.out.println(pw.errorMessage());   
    
         }
-      }
+      }*/
        
 
 

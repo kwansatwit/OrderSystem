@@ -5,25 +5,41 @@
  */
 package ordersystem;
 
+
 import java.util.Date;
+import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  *
- * @author diaba
+ * @author Ahmed Diab
  */
 public class Employee {
     
     String firstName;
     String lastName;
-    Date dateOfBirth;
+    String dateOfBirth;
     String address;
     String phoneNumber;
     String email;
     String position;
-    char access;
+    int access;
     String userName;
+    String password;
     
-    public Employee(String firstName, String lastName, Date dateOfBirth, String address, String phoneNumber, String email, String position, char access) {
+    public Employee() {
+        this.access = 0;
+        this.address = "";
+        this.dateOfBirth = null;
+        this.email = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.phoneNumber = "";
+        this.position = "";
+        this.userName = "";
+        this.password = "";
+    }
+    
+    public Employee(String firstName, String lastName, String dateOfBirth, String address, String phoneNumber, String email, String position, int access) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -50,11 +66,11 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -90,11 +106,11 @@ public class Employee {
         this.position = position;
     }
 
-    public char getAccess() {
+    public int getAccess() {
         return access;
     }
 
-    public void setAccess(char access) {
+    public void setAccess(int access) {
         this.access = access;
     }
     
@@ -108,6 +124,39 @@ public class Employee {
     
     public String getUserName(){
         return userName;
+    }
+    
+    public void generatePassword(){
+        
+        String pwd = "";
+        ComplexPassword pass = null;
+        boolean isValid = false;
+        
+        while (!isValid) {
+
+            try {
+                String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
+                pwd = RandomStringUtils.random(9, characters);
+                System.out.println(pwd);
+                pass = new ComplexPassword(pwd);
+
+                System.out.println(pass.validate());
+
+                if (pass.validate() == true) {
+                    isValid = true;
+                }
+            } catch (Exception e) {
+                System.out.println(pass.errorMessage());
+            }
+
+            
+        }
+        
+        password = pwd;
+    }
+    
+    public String getPassword(){
+        return password;
     }
     
     
