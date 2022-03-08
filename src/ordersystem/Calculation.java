@@ -3,20 +3,18 @@ package ordersystem;
 
 import java.util.ArrayList;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  *
  * @author Shuk Ha Kwan
  * 
  * 1/27/22: 
  * Created Class for calculate bills and sales report - Ha
+ * 3/8/22:
+ * added setter and getter for total and price
+ * in case need to reset total
  */
 public class Calculation {
-    double total, price;
+    private double total, price;
     
     /**
      * default constructor
@@ -36,11 +34,43 @@ public class Calculation {
     }
     
     /**
+     * set total function
+     * can use it to reset total
+     * @param total 
+     */
+    public void setTotal(double total){
+        this.total = total;
+    }
+    
+    /**
+     * Set price function
+     * @param price 
+     */
+    public void setPrice(double price){
+        this.price = price;
+    }
+    
+    /**
+     * get total amount
+     * @return 
+     */
+    public final double  getTotal(){
+        return this.total;        
+    }
+    
+    /**
+     * get price
+     * @return 
+     */
+    public final double getPrice(){
+        return this.price;
+    }
+    /**
      * added price each time and updated the total prices
      * @param price
      * @return the sum of price 
      */
-    double addTotal(double price)
+   public double addTotal(double price)
     {
         return total += price;
     }
@@ -50,26 +80,19 @@ public class Calculation {
      * @param price
      * @return the sum of price
      */
-    double subtractTotal(double price){
+    public double subtractTotal(double price){
         
         return total -= price;
     }
     
-    /**
-     * 
-     * @return total price
-     */
-    double getTotal(){
-        return total;
-    }
-    
+
     /**
      * 
      * @param sales - an arraylist contained all the sales value as double
      * the arraylist passed from gui, which come from database
      * @return a sum of all sales value
      */
-   double totalSale(ArrayList<Double> sales){
+    public double totalSale(ArrayList<Double> sales){
       return sales.stream().mapToDouble(Double::doubleValue).sum();
    }
     

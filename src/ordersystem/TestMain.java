@@ -24,15 +24,65 @@ public class TestMain {
     	
     	String databaseName = "sql5475007";
     	String userName = "sql5475007";
-    	String password = "avlj8CSFyF";
+    	String password = "avlj8CSFyF!";
     	
     	
     	DbConnection connection = new DbConnection(databaseName, userName, password);
-    	Connection con = connection.openConnection();
-    	
+    	Connection con = connection.openConnection();    	
 
-        /*Scanner input =  new Scanner(System.in);
-        ArrayList<Double> amount = new ArrayList<Double>();
+        Scanner input =  new Scanner(System.in);  
+        
+        
+        Employee employee = new Employee("ahmed", "diab", "02/05/1997", "122 main st.", "617-765-6464", "ahmed@exm.com", "emp", 0);
+        
+        employee.generateUsername();
+        employee.generatePassword();
+        
+        
+        System.out.println(employee.getUserName());
+        System.out.println(employee.getPassword());
+        
+        DataCryption data = new DataCryption();
+        data.setData(password);
+        String pw = data.getData();
+        String en = data.enCryption();
+        data.setData(en);
+        String de = data.deCryption(); 
+        System.out.println("Origin Pw: " + pw+" \nEncrypted: " + en + " \nDeCryption: " + de);
+
+       
+
+
+    }
+    
+    public static void oldTest(){
+             
+     // testing for the password creator
+      /*ComplexPassword pw = new ComplexPassword();
+      boolean isPw = false;
+      String pws = "";*/
+      
+      
+      
+      /*while(true){
+
+         try{
+          System.out.print("Enter PW: ");
+          pws = input.nextLine();
+          pw.setPassword(pws); 
+          pw.validate();
+
+          
+          
+         }catch(Exception e){
+             System.out.print("Here?");
+             System.out.print(e.getMessage()+"\n");
+             System.out.println(pw.errorMessage());   
+   
+        }
+      }*/
+      
+      /*       ArrayList<Double> amount = new ArrayList<Double>();
         Calculation cal = new Calculation();
         double upperbound = 1500;
         Random rand = new Random();
@@ -72,45 +122,6 @@ public class TestMain {
              System.out.println("getTotal = "+ cal.getTotal());
         }
         */
-     
-        
-        
-        Employee employee = new Employee("ahmed", "diab", "02/05/1997", "122 main st.", "617-765-6464", "ahmed@exm.com", "emp", 0);
-        
-        employee.generateUsername();
-        employee.generatePassword();
-        
-        
-        System.out.println(employee.getUserName());
-        System.out.println(employee.getPassword());
-     
-     // testing for the password creator
-      /*ComplexPassword pw = new ComplexPassword();
-      boolean isPw = false;
-      String pws = "";*/
-      
-      
-      
-      /*while(true){
-
-         try{
-          System.out.print("Enter PW: ");
-          pws = input.nextLine();
-          pw.setPassword(pws); 
-          pw.validate();
-
-          
-          
-         }catch(Exception e){
-             System.out.print("Here?");
-             System.out.print(e.getMessage()+"\n");
-             System.out.println(pw.errorMessage());   
-   
-        }
-      }*/
-       
-
-
     }
 
 }

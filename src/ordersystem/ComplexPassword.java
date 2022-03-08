@@ -6,10 +6,6 @@ import static java.lang.Character.isLowerCase;
 import static java.lang.Character.isSpaceChar;
 import static java.lang.Character.isUpperCase;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 /**
  *
  * @author Shuk Ha Kwan
