@@ -1,7 +1,7 @@
 package User_Interface;
 
 /**
- * @author zhangf2
+ * @author zhangf2, Ahmed Diab
  */
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;

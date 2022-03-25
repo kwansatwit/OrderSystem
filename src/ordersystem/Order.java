@@ -67,7 +67,7 @@ public class Order {
         this.items = items;
     }
     
-    public String itemsToString(){
+    public String printOrder(){
         
         String itemsStr = "";
         

@@ -10,7 +10,7 @@ import ordersystem.EmployeeDB;
 
 /**
  *
- * @author zhangf2
+ * @author zhangf2, Ahmed Diab
  */
 public class EmployeeGUI extends javax.swing.JFrame {
     Employee employee = new Employee();

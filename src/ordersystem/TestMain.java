@@ -22,7 +22,7 @@ public class TestMain {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
     	
-    	String databaseName = "sql5475007";
+    	/*String databaseName = "sql5475007";
     	String userName = "sql5475007";
     	String password = "avlj8CSFyF!";
     	
@@ -48,7 +48,27 @@ public class TestMain {
         String en = data.enCryption();
         data.setData(en);
         String de = data.deCryption(); 
-        System.out.println("Origin Pw: " + pw+" \nEncrypted: " + en + " \nDeCryption: " + de);
+        System.out.println("Origin Pw: " + pw+" \nEncrypted: " + en + " \nDeCryption: " + de);*/
+        
+        Pizza pizza = new Pizza("sadadss", "pepperoni pizza", "M", "tomato sauce", 14.99, 290);
+        Dish dish = new Dish("khhj", "Lasagna", "L", 22.45, 190);
+        Drink drink = new Drink("dsadads", "Margarita", "M", true, 60.56, 78);
+        
+        //System.out.println(pizza.toString());
+        
+        Item item1 = new Item(pizza.toString(), pizza.getPrice());
+        Item item2 = new Item(dish.toString(), dish.getPrice());
+        Item item3 = new Item(drink.toString(), drink.getPrice());
+        
+        
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+        Order order = new Order("asdad", "09:45 pm", "122 main st. Boston, MA", "617-999-9891", items);
+        System.out.println(order.printOrder());
+        System.out.println("---------------------");
+        System.out.println(order.totalPrice());
 
        
 
