@@ -129,33 +129,37 @@ public class LoginGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
-        LoginGUI welcome = new LoginGUI();
-        String username, password;
-        username = text_username.getText();
-        password = new String(text_password.getPassword());
-        MainMenuGUI menu = new MainMenuGUI();
-        
-        String databaseName = "sql5475007";
-    	String dbUserName = "sql5475007";
-    	String dbPassword = "avlj8CSFyF";
-        
-        EmployeeDB inputEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
-        
-        try {
+        try {                                             
+            LoginGUI welcome = new LoginGUI();
+            String username, password;
+            username = text_username.getText();
+            password = new String(text_password.getPassword());
+            MainMenuGUI menu = new MainMenuGUI();
             
-            boolean isEmployee = inputEmp.isEmployee(username, password);
-            System.out.println(isEmployee);
-            if(isEmployee){
-                System.out.println(inputEmp.isEmployee(username, password));
-                welcome.setVisible(false); //you can't see me!
-                //dispose(); //Destroy the JFrame object
-                JOptionPane.showMessageDialog(this,"login sucess!");
-                menu.setVisible(true);
-            }
-            else{
-                JOptionPane.showMessageDialog(this,"Invalid username or password!");
-                welcome.setVisible(false); //you can't see me!
-               // dispose(); //Destroy the JFrame object
+            String databaseName = "sql5475007";
+            String dbUserName = "sql5475007";
+            String dbPassword = "avlj8CSFyF";
+            
+            EmployeeDB inputEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                
+                boolean isEmployee = inputEmp.isEmployee(username, password);
+                System.out.println(isEmployee);
+                if(isEmployee){
+                    System.out.println(inputEmp.isEmployee(username, password));
+                    welcome.setVisible(false); //you can't see me!
+                    //dispose(); //Destroy the JFrame object
+                    JOptionPane.showMessageDialog(this,"login sucess!");
+                    menu.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(this,"Invalid username or password!");
+                    welcome.setVisible(false); //you can't see me!
+                    // dispose(); //Destroy the JFrame object
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (Exception ex) {
             Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);

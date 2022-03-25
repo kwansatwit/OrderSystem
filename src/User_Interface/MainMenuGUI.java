@@ -2,6 +2,13 @@ package User_Interface;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import ordersystem.Pizza;
+import ordersystem.PizzaDB;
 
 /**
  * 
@@ -9,8 +16,11 @@ import java.awt.event.WindowEvent;
  */
 public class MainMenuGUI extends javax.swing.JFrame {
 
-    public MainMenuGUI() {
+    public MainMenuGUI() throws Exception {
         initComponents();
+        
+       JOptionPane.showMessageDialog(this,"opened!");
+       System.out.println("opened!!");
     }
 
     @SuppressWarnings("unchecked")
@@ -337,7 +347,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_button_sandwichActionPerformed
 
     private void button_employeeMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_employeeMActionPerformed
-       MainMenuGUI mainMenu = new MainMenuGUI();
+        try {
+            MainMenuGUI mainMenu = new MainMenuGUI();
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
        // mainMenu.setVisible(false); 
        // dispose(); //Destroy the JFrame object
        EmployeeGUI employee = new EmployeeGUI();
@@ -355,7 +369,8 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_button_printActionPerformed
 
     private void button_pizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_pizzaActionPerformed
-        // TODO add your handling code here:
+        EmployeeGUI employee = new EmployeeGUI();
+        employee.setVisible(true);
     }//GEN-LAST:event_button_pizzaActionPerformed
 
     private void button_dishesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_dishesActionPerformed
@@ -376,14 +391,20 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     private void button_saveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_saveOrderActionPerformed
         // TODO add your handling code here:
+        EmployeeGUI employee = new EmployeeGUI();
+        employee.setVisible(true);
     }//GEN-LAST:event_button_saveOrderActionPerformed
 
     private void employee_managementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employee_managementActionPerformed
-       MainMenuGUI mainMenu = new MainMenuGUI();
-       mainMenu.setVisible(false); 
-       // dispose(); //Destroy the JFrame object
-       EmployeeGUI employee = new EmployeeGUI();
-       employee.setVisible(true);
+        try {
+            MainMenuGUI mainMenu = new MainMenuGUI();
+            mainMenu.setVisible(false);
+            // dispose(); //Destroy the JFrame object
+            EmployeeGUI employee = new EmployeeGUI();
+            employee.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_employee_managementActionPerformed
 
     private void food_managementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_food_managementActionPerformed
@@ -397,10 +418,34 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     private void sandwichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sandwichActionPerformed
         // TODO add your handling code here:
+        
+        EmployeeGUI employee = new EmployeeGUI();
+        employee.setVisible(true);
     }//GEN-LAST:event_sandwichActionPerformed
 
     private void pizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pizzaActionPerformed
-        // TODO add your handling code here:
+        System.out.println("clicked!");
+        
+        EmployeeGUI employee = new EmployeeGUI();
+        employee.setVisible(true);
+        
+        /*String databaseName = "sql5475007";
+        String dbUserName = "sql5475007";
+        String dbPassword = "avlj8CSFyF";
+
+        PizzaDB DBpizzas = new PizzaDB(databaseName,dbUserName,dbPassword);
+        
+        ArrayList<Pizza> pizzas = new ArrayList<>();
+
+ 
+        try {
+            // populate the table with pizzas data.
+            pizzas = DBpizzas.getPizzas();
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addRowToJTable(pizzas);*/
+        System.out.println("here!");
     }//GEN-LAST:event_pizzaActionPerformed
 
     private void dishesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dishesActionPerformed
@@ -462,10 +507,33 @@ public class MainMenuGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenuGUI().setVisible(true);
+                try {
+                    new MainMenuGUI().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
+    }
+    
+    
+    // add rows to table and populate them with list of contacts data.
+     public void addRowToJTable(ArrayList<Pizza> listPizzas)
+    {
+        DefaultTableModel model = (DefaultTableModel) table_menu.getModel();
+        Object rowData[] = new Object[6];
+        for(int i = 0; i < listPizzas.size(); i++)
+        {
+            rowData[0] = listPizzas.get(i).getId();
+            rowData[1] = listPizzas.get(i).getName();
+            rowData[2] = listPizzas.get(i).getSauce();
+            rowData[3] = listPizzas.get(i).getSize();
+            rowData[4] = listPizzas.get(i).getPrice();
+            rowData[5] = listPizzas.get(i).getAmountLeft();
+            model.insertRow(i, rowData);
+        }
+                
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
