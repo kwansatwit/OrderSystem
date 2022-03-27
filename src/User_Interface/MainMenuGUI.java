@@ -1,5 +1,6 @@
 package User_Interface;
 
+import java.awt.List;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -7,20 +8,60 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import ordersystem.Dessert;
+import ordersystem.DessertDB;
+import ordersystem.Dish;
+import ordersystem.DishDB;
+import ordersystem.Drink;
+import ordersystem.DrinkDB;
+import ordersystem.Food;
 import ordersystem.Pizza;
 import ordersystem.PizzaDB;
+import ordersystem.Sandwich;
+import ordersystem.SandwichDB;
 
 /**
  * 
  * @author zhangf2
  */
 public class MainMenuGUI extends javax.swing.JFrame {
+    
+    String databaseName = "sql5475007";
+    String dbUserName = "sql5475007";
+    String dbPassword = "avlj8CSFyF";
+    
+    ArrayList<Pizza> pizzas;
+    ArrayList<Dish> dishes;
+    ArrayList<Sandwich> sandwiches;
+    ArrayList<Drink> drinks;
+    ArrayList<Dessert> desserts;
+    
+    boolean pizzaClicked = false;
+    boolean dishClicked = false;
+    boolean sandwichClicked = false;
+    boolean drinkClicked = false;
+    boolean dessertClicked = false;
 
     public MainMenuGUI() throws Exception {
         initComponents();
         
-       JOptionPane.showMessageDialog(this,"opened!");
-       System.out.println("opened!!");
+        /*String databaseName = "sql5475007";
+        String dbUserName = "sql5475007";
+        String dbPassword = "avlj8CSFyF";
+
+        PizzaDB DBpizzas = new PizzaDB(databaseName,dbUserName,dbPassword);
+        
+        ArrayList<Pizza> pizzas = new ArrayList<>();
+
+ 
+        try {
+            // populate the table with pizzas data.
+            pizzas = DBpizzas.getPizzas();
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addRowToJTable(pizzas);*/
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -32,7 +73,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         sandwich = new javax.swing.JButton();
         pizza = new javax.swing.JButton();
-        dishes = new javax.swing.JButton();
+        dish = new javax.swing.JButton();
         drink = new javax.swing.JButton();
         dessert = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -81,13 +122,13 @@ public class MainMenuGUI extends javax.swing.JFrame {
             }
         });
 
-        dishes.setBackground(new java.awt.Color(204, 204, 204));
-        dishes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        dishes.setForeground(new java.awt.Color(0, 153, 153));
-        dishes.setText("Dishes");
-        dishes.addActionListener(new java.awt.event.ActionListener() {
+        dish.setBackground(new java.awt.Color(204, 204, 204));
+        dish.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        dish.setForeground(new java.awt.Color(0, 153, 153));
+        dish.setText("Dish");
+        dish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dishesActionPerformed(evt);
+                dishActionPerformed(evt);
             }
         });
 
@@ -120,7 +161,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(sandwich)
                     .addComponent(pizza, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dishes, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dish, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(drink, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dessert, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -133,7 +174,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(pizza, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(dishes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dish, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(drink, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
@@ -150,71 +191,21 @@ public class MainMenuGUI extends javax.swing.JFrame {
         table_menu.setForeground(new java.awt.Color(204, 204, 204));
         table_menu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Item_ID", "Item_Name", "Addtion", "Price", "Amount"
+                "ID", "Name", "Size", "Price", "Inventory", "Amount"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        table_menu.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(table_menu);
         table_menu.getAccessibleContext().setAccessibleName("");
 
@@ -417,47 +408,129 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void sandwichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sandwichActionPerformed
-        // TODO add your handling code here:
-        
-        EmployeeGUI employee = new EmployeeGUI();
-        employee.setVisible(true);
-    }//GEN-LAST:event_sandwichActionPerformed
-
-    private void pizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pizzaActionPerformed
-        System.out.println("clicked!");
-        
-        EmployeeGUI employee = new EmployeeGUI();
-        employee.setVisible(true);
-        
-        /*String databaseName = "sql5475007";
-        String dbUserName = "sql5475007";
-        String dbPassword = "avlj8CSFyF";
-
-        PizzaDB DBpizzas = new PizzaDB(databaseName,dbUserName,dbPassword);
-        
-        ArrayList<Pizza> pizzas = new ArrayList<>();
-
- 
+        sandwichClicked = true;
+        dessertClicked = false;
+        drinkClicked = false;
+        dishClicked = false;
+        pizzaClicked = false;
         try {
-            // populate the table with pizzas data.
-            pizzas = DBpizzas.getPizzas();
+            System.out.println("clicked!");       
+            SandwichDB DBsandwiches = new SandwichDB(databaseName,dbUserName,dbPassword);
+            
+            sandwiches = new ArrayList<>();
+            
+            
+            
+            // populate the table with sandwiches data.
+            sandwiches = DBsandwiches.getSandwiches();
+            
+            addRowToJTable();
+            
+            System.out.println("here!");
         } catch (Exception ex) {
             Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        addRowToJTable(pizzas);*/
-        System.out.println("here!");
+    }//GEN-LAST:event_sandwichActionPerformed
+
+    private void pizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pizzaActionPerformed
+        
+        pizzaClicked = true;
+        dishClicked = false;
+        sandwichClicked = false;
+        drinkClicked = false;
+        dessertClicked = false;
+        try {
+            System.out.println("clicked!");       
+            PizzaDB DBpizzas = new PizzaDB(databaseName,dbUserName,dbPassword);
+            
+            pizzas = new ArrayList<>();
+            
+            
+            
+            // populate the table with pizzas data.
+            pizzas = DBpizzas.getPizzas();
+            
+            addRowToJTable();
+            
+            System.out.println("here!");
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_pizzaActionPerformed
 
-    private void dishesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dishesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dishesActionPerformed
+    private void dishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dishActionPerformed
+        dishClicked = true;
+        pizzaClicked = false;
+        sandwichClicked = false;
+        drinkClicked = false;
+        dessertClicked = false;
+        try {
+            System.out.println("clicked!");       
+            DishDB DBdishes = new DishDB(databaseName,dbUserName,dbPassword);
+            
+            dishes = new ArrayList<>();
+            
+            
+            
+            // populate the table with dishes data.
+            dishes = DBdishes.getDishes();
+            
+            addRowToJTable();
+            
+            System.out.println("here!");
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_dishActionPerformed
 
     private void drinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drinkActionPerformed
-        // TODO add your handling code here:
+        drinkClicked = true;
+        dishClicked = false;
+        pizzaClicked = false;
+        sandwichClicked = false;
+        dessertClicked = false;
+        try {
+            System.out.println("clicked!");       
+            DrinkDB DBdrinks = new DrinkDB(databaseName,dbUserName,dbPassword);
+            
+            drinks = new ArrayList<>();
+            
+            
+            
+            // populate the table with drinks data.
+            drinks = DBdrinks.getDrinks();
+            
+            addRowToJTable();
+            
+            System.out.println("here!");
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_drinkActionPerformed
 
     private void dessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dessertActionPerformed
-        // TODO add your handling code here:
+        dessertClicked = true;
+        drinkClicked = false;
+        dishClicked = false;
+        pizzaClicked = false;
+        sandwichClicked = false;
+        try {
+            System.out.println("clicked!");       
+            DessertDB DBdesserts = new DessertDB(databaseName,dbUserName,dbPassword);
+            
+            desserts = new ArrayList<>();
+            
+            
+            
+            // populate the table with desserts data.
+            desserts = DBdesserts.getDesserts();
+            
+            addRowToJTable();
+            
+            System.out.println("here!");
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_dessertActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -518,21 +591,117 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }
     
     
-    // add rows to table and populate them with list of contacts data.
-     public void addRowToJTable(ArrayList<Pizza> listPizzas)
+    // add rows to table and populate them with list of pizzas data.
+     public void addRowToJTable()
     {
+
+        DefaultTableModel model = (DefaultTableModel) table_menu.getModel();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+
+        Object rowData[] = new Object[6];
+        
+        /*if(pizzas.getClass().isInstance(Pizza)){
+            
+        }*/
+       
+        if (pizzaClicked) {
+            for (int i = 0; i < pizzas.size(); i++) {
+                rowData[0] = pizzas.get(i).getId();
+                rowData[1] = pizzas.get(i).getName();
+                rowData[2] = pizzas.get(i).getSize();
+                rowData[3] = "$" + pizzas.get(i).getPrice();
+                rowData[4] = pizzas.get(i).getAmountLeft();
+
+                model.insertRow(i, rowData);
+
+            }
+        }
+        
+        if (dishClicked){
+            for (int i = 0; i < dishes.size(); i++) {
+                rowData[0] = dishes.get(i).getId();
+                rowData[1] = dishes.get(i).getName();
+                rowData[2] = dishes.get(i).getSize();
+                rowData[3] = "$" + dishes.get(i).getPrice();
+                rowData[4] = dishes.get(i).getAmountLeft();
+
+                model.insertRow(i, rowData);
+
+            }
+        }
+        
+        if (sandwichClicked){
+            for (int i = 0; i < sandwiches.size(); i++) {
+                rowData[0] = sandwiches.get(i).getId();
+                rowData[1] = sandwiches.get(i).getName();
+                rowData[2] = sandwiches.get(i).getSize();
+                rowData[3] = "$" + dishes.get(i).getPrice();
+                rowData[4] = sandwiches.get(i).getAmountLeft();
+
+                model.insertRow(i, rowData);
+
+            }
+        }
+        
+        if (drinkClicked){
+            for (int i = 0; i < drinks.size(); i++) {
+                rowData[0] = drinks.get(i).getId();
+                rowData[1] = drinks.get(i).getName();
+                rowData[2] = drinks.get(i).getSize();
+                rowData[3] = "$" + drinks.get(i).getPrice();
+                rowData[4] = drinks.get(i).getAmountLeft();
+
+                model.insertRow(i, rowData);
+
+            }
+        }
+        
+        if (dessertClicked){
+            for (int i = 0; i < desserts.size(); i++) {
+                rowData[0] = desserts.get(i).getId();
+                rowData[1] = desserts.get(i).getName();
+                rowData[2] = desserts.get(i).getSize();
+                rowData[3] = "$" + desserts.get(i).getPrice();
+                rowData[4] = desserts.get(i).getAmountLeft();
+                
+
+                model.insertRow(i, rowData);
+
+            }
+        }
+        
+        
+        
+                
+    }
+     
+    // add rows to table and populate them with list of pizzas data.
+     public void addRowToDishJTable(ArrayList<Dish> listDishes)
+    {
+
         DefaultTableModel model = (DefaultTableModel) table_menu.getModel();
         Object rowData[] = new Object[6];
-        for(int i = 0; i < listPizzas.size(); i++)
+        
+        /*if(pizzas.getClass().isInstance(Pizza)){
+            
+        }*/
+       
+        
+        for(int i = 0; i < listDishes.size(); i++)
         {
-            rowData[0] = listPizzas.get(i).getId();
-            rowData[1] = listPizzas.get(i).getName();
-            rowData[2] = listPizzas.get(i).getSauce();
-            rowData[3] = listPizzas.get(i).getSize();
-            rowData[4] = listPizzas.get(i).getPrice();
-            rowData[5] = listPizzas.get(i).getAmountLeft();
-            model.insertRow(i, rowData);
+            rowData[0] = listDishes.get(i).getId();
+            rowData[1] = listDishes.get(i).getName();
+            rowData[2] = listDishes.get(i).getSize();
+            rowData[3] = listDishes.get(i).getPrice();
+            rowData[4] = listDishes.get(i).getAmountLeft();
+           // rowData[6] = pizzas.get(i).getSauce();
+            
+            
+            model.insertRow(i, rowData);      
+            
         }
+        
                 
     }
 
@@ -542,7 +711,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     private javax.swing.JButton customer_check;
     private javax.swing.JPanel customer_info;
     private javax.swing.JButton dessert;
-    private javax.swing.JButton dishes;
+    private javax.swing.JButton dish;
     private javax.swing.JButton drink;
     private javax.swing.JButton employee_management;
     private javax.swing.JButton food_management;

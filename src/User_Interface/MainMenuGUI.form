@@ -75,7 +75,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="sandwich" min="-2" max="-2" attributes="0"/>
                           <Component id="pizza" min="-2" pref="101" max="-2" attributes="0"/>
-                          <Component id="dishes" min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="dish" min="-2" pref="101" max="-2" attributes="0"/>
                           <Component id="drink" min="-2" pref="101" max="-2" attributes="0"/>
                           <Component id="dessert" min="-2" pref="101" max="-2" attributes="0"/>
                       </Group>
@@ -91,7 +91,7 @@
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="pizza" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="dishes" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="dish" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="drink" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
@@ -136,7 +136,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pizzaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="dishes">
+            <Component class="javax.swing.JButton" name="dish">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -147,10 +147,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Dishes"/>
+                <Property name="text" type="java.lang.String" value="Dish"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dishesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dishActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="drink">
@@ -216,16 +216,23 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="52">
-                    <Column editable="true" title="Item_ID" type="java.lang.String"/>
-                    <Column editable="true" title="Item_Name" type="java.lang.String"/>
-                    <Column editable="true" title="Addtion" type="java.lang.String"/>
-                    <Column editable="true" title="Price" type="java.lang.Double"/>
+                  <Table columnCount="6" rowCount="0">
+                    <Column editable="true" title="ID" type="java.lang.String"/>
+                    <Column editable="true" title="Name" type="java.lang.String"/>
+                    <Column editable="true" title="Size" type="java.lang.String"/>
+                    <Column editable="true" title="Price" type="java.lang.String"/>
+                    <Column editable="true" title="Inventory" type="java.lang.Integer"/>
                     <Column editable="true" title="Amount" type="java.lang.Integer"/>
                   </Table>
                 </Property>
+                <Property name="autoResizeMode" type="int" value="4"/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
