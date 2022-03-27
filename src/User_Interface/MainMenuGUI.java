@@ -186,9 +186,10 @@ public class MainMenuGUI extends javax.swing.JFrame {
         jPanel2.setBounds(50, 140, 150, 440);
 
         table_menu.setAutoCreateRowSorter(true);
-        table_menu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        table_menu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        table_menu.setForeground(new java.awt.Color(204, 204, 204));
+        table_menu.setBackground(new java.awt.Color(51, 51, 0));
+        table_menu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        table_menu.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        table_menu.setForeground(new java.awt.Color(102, 255, 255));
         table_menu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -205,7 +206,12 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        table_menu.setAlignmentX(1.2F);
+        table_menu.setAlignmentY(2.0F);
         table_menu.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        table_menu.setGridColor(new java.awt.Color(204, 255, 255));
+        table_menu.setIntercellSpacing(new java.awt.Dimension(1, 2));
+        table_menu.setRowHeight(25);
         jScrollPane1.setViewportView(table_menu);
         table_menu.getAccessibleContext().setAccessibleName("");
 
