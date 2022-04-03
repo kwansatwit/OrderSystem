@@ -4,19 +4,21 @@
  */
 package User_Interface;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author zhangf2
  */
 public class PrintGUI extends javax.swing.JFrame {
-
     /**
      * Creates new form PrintGUI
      */
+// close current page without close the main menu page
     public PrintGUI() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

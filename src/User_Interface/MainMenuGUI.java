@@ -1,11 +1,14 @@
 package User_Interface;
-
+/*
+ fix the UI part, this page can close the sub page without close the main mneu page
+*/
 import java.awt.List;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ordersystem.Dessert;
@@ -44,7 +47,6 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     public MainMenuGUI() throws Exception {
         initComponents();
-        
         /*String databaseName = "sql5475007";
         String dbUserName = "sql5475007";
         String dbPassword = "avlj8CSFyF";
@@ -411,6 +413,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
+        // dispose the main menu, and replay login page again, to allow another employee to login.
+        this.dispose();  
+        LoginGUI login = new LoginGUI();
+        login.setVisible(true);
+        
     }//GEN-LAST:event_logoutActionPerformed
 
     private void sandwichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sandwichActionPerformed

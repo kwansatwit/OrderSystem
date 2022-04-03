@@ -4,6 +4,8 @@
  */
 package User_Interface;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author zhangf2
@@ -13,9 +15,13 @@ public class CustomerGUI extends javax.swing.JFrame {
     /**
      * Creates new form CustomerGui
      */
+    
+    // close current page without close the main menu page
     public CustomerGUI() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -37,38 +37,38 @@ public class LoginGUI extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel_username.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_username.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel_username.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
         jLabel_username.setForeground(new java.awt.Color(51, 51, 0));
         jLabel_username.setText("Welcome to Order System");
         jPanel1.add(jLabel_username);
-        jLabel_username.setBounds(100, 80, 530, 50);
+        jLabel_username.setBounds(60, 90, 620, 50);
 
         jLabel_password.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_password.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel_password.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
         jLabel_password.setForeground(new java.awt.Color(51, 51, 0));
         jLabel_password.setText("Password :");
         jPanel1.add(jLabel_password);
-        jLabel_password.setBounds(20, 310, 200, 30);
+        jLabel_password.setBounds(20, 280, 200, 30);
 
         jLabel_welcome.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_welcome.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel_welcome.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
         jLabel_welcome.setForeground(new java.awt.Color(51, 51, 0));
         jLabel_welcome.setText("Username :");
         jPanel1.add(jLabel_welcome);
-        jLabel_welcome.setBounds(10, 180, 210, 30);
+        jLabel_welcome.setBounds(20, 180, 210, 30);
 
         button_login.setBackground(new java.awt.Color(204, 204, 204));
-        button_login.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        button_login.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         button_login.setForeground(new java.awt.Color(51, 51, 51));
         button_login.setText("Login");
-        button_login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        button_login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null));
         button_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_loginActionPerformed(evt);
             }
         });
         jPanel1.add(button_login);
-        button_login.setBounds(570, 390, 140, 50);
+        button_login.setBounds(540, 390, 100, 50);
 
         text_password.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         text_password.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +77,7 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(text_password);
-        text_password.setBounds(230, 300, 230, 50);
+        text_password.setBounds(180, 280, 230, 50);
 
         text_username.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         text_username.addActionListener(new java.awt.event.ActionListener() {
@@ -86,11 +86,11 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(text_username);
-        text_username.setBounds(230, 180, 220, 50);
+        text_username.setBounds(180, 180, 230, 50);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Forgot Password");
+        jLabel1.setText("Forgot Password ?");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(490, 300, 180, 50);
 

@@ -5,6 +5,7 @@
 package User_Interface;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import ordersystem.Employee;
 import ordersystem.EmployeeDB;
 
@@ -19,11 +20,12 @@ public class EmployeeGUI extends javax.swing.JFrame {
     String dbPassword = "avlj8CSFyF";
    // EmployeeDB addEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
 
-
-    public EmployeeGUI() {
+    // close current page without close the main menu page
+    public EmployeeGUI(){
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
