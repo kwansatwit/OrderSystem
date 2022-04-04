@@ -15,12 +15,11 @@ public class ProductGUI extends javax.swing.JFrame {
     /**
      * Creates new form ProductGUI
      */
-   // close current page without close the main menu page
     public ProductGUI() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,21 +29,180 @@ public class ProductGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        BtnAdd = new javax.swing.JButton();
+        BtnEdit = new javax.swing.JButton();
+        BtnSave = new javax.swing.JButton();
+        BtnRemove = new javax.swing.JButton();
+        productID = new javax.swing.JTextField();
+        productName = new javax.swing.JTextField();
+        productSize = new javax.swing.JTextField();
+        productPrice = new javax.swing.JTextField();
+        inventory = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(618, 531));
+
+        jPanel1.setLayout(null);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Product Management");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(150, 50, 420, 50);
+
+        BtnAdd.setBackground(new java.awt.Color(204, 204, 204));
+        BtnAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BtnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/add.png"))); // NOI18N
+        BtnAdd.setText("Add");
+        BtnAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAddActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnAdd);
+        BtnAdd.setBounds(470, 160, 110, 40);
+
+        BtnEdit.setBackground(new java.awt.Color(204, 204, 204));
+        BtnEdit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/edit-validated-icon (1).png"))); // NOI18N
+        BtnEdit.setText("Edit");
+        BtnEdit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnEdit);
+        BtnEdit.setBounds(470, 240, 110, 40);
+
+        BtnSave.setBackground(new java.awt.Color(204, 204, 204));
+        BtnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BtnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login.png"))); // NOI18N
+        BtnSave.setText("Save");
+        BtnSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSaveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnSave);
+        BtnSave.setBounds(470, 320, 110, 40);
+
+        BtnRemove.setBackground(new java.awt.Color(204, 204, 204));
+        BtnRemove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BtnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/cancel.png"))); // NOI18N
+        BtnRemove.setText("Remove");
+        BtnRemove.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRemoveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRemove);
+        BtnRemove.setBounds(470, 400, 110, 40);
+
+        productID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(productID);
+        productID.setBounds(190, 160, 200, 31);
+
+        productName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(productName);
+        productName.setBounds(190, 220, 200, 31);
+
+        productSize.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(productSize);
+        productSize.setBounds(190, 290, 200, 31);
+
+        productPrice.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(productPrice);
+        productPrice.setBounds(190, 350, 200, 31);
+
+        inventory.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        inventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inventoryActionPerformed(evt);
+            }
+        });
+        jPanel1.add(inventory);
+        inventory.setBounds(190, 420, 200, 31);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Product ID :");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(60, 160, 110, 30);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Name :");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(100, 220, 70, 30);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Size :");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(120, 290, 60, 30);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Price :");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(110, 350, 90, 30);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Inventory :");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(70, 420, 130, 30);
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/background3.jpg"))); // NOI18N
+        jPanel1.add(background);
+        background.setBounds(0, 0, 650, 531);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAddActionPerformed
+
+    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnEditActionPerformed
+
+    private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnSaveActionPerformed
+
+    private void BtnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRemoveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnRemoveActionPerformed
+
+    private void inventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inventoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,5 +240,22 @@ public class ProductGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAdd;
+    private javax.swing.JButton BtnEdit;
+    private javax.swing.JButton BtnRemove;
+    private javax.swing.JButton BtnSave;
+    private javax.swing.JLabel background;
+    private javax.swing.JTextField inventory;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField productID;
+    private javax.swing.JTextField productName;
+    private javax.swing.JTextField productPrice;
+    private javax.swing.JTextField productSize;
     // End of variables declaration//GEN-END:variables
 }

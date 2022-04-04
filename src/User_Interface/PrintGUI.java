@@ -28,20 +28,42 @@ public class PrintGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        reportPanel = new javax.swing.JScrollPane();
+        background = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(546, 480));
+
+        panel1.setLayout(null);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/print48.png"))); // NOI18N
+        jLabel9.setText("  Current Order");
+        panel1.add(jLabel9);
+        jLabel9.setBounds(60, 30, 330, 50);
+        panel1.add(reportPanel);
+        reportPanel.setBounds(60, 90, 330, 340);
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/background3.jpg"))); // NOI18N
+        panel1.add(background);
+        background.setBounds(0, 0, 540, 480);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -80,5 +102,9 @@ public class PrintGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JScrollPane reportPanel;
     // End of variables declaration//GEN-END:variables
 }
