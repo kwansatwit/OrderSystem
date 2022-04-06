@@ -2,15 +2,21 @@ package User_Interface;
 /*
  fix the UI part, this page can close the sub page without close the main mneu page
 */
+import java.awt.Color;
 import java.awt.List;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import ordersystem.Customer;
+import ordersystem.CustomerDB;
 import ordersystem.Dessert;
 import ordersystem.DessertDB;
 import ordersystem.Dish;
@@ -18,6 +24,9 @@ import ordersystem.DishDB;
 import ordersystem.Drink;
 import ordersystem.DrinkDB;
 import ordersystem.Food;
+import ordersystem.Item;
+import ordersystem.Order;
+import ordersystem.OrderDB;
 import ordersystem.Pizza;
 import ordersystem.PizzaDB;
 import ordersystem.Sandwich;
@@ -38,6 +47,19 @@ public class MainMenuGUI extends javax.swing.JFrame {
     ArrayList<Sandwich> sandwiches;
     ArrayList<Drink> drinks;
     ArrayList<Dessert> desserts;
+    
+    CustomerDB customerDB = null;
+    Customer customer = null;
+    
+    ArrayList<Item> items = new ArrayList<>();
+    Order order = new Order();
+    
+    OrderDB orderDB = null;
+    PizzaDB pizzaDB = null;
+    DishDB dishDB = null;
+    SandwichDB sandwichDB = null;
+    DrinkDB drinkDB = null;
+    DessertDB dessertDB = null;
     
     boolean pizzaClicked = false;
     boolean dishClicked = false;
@@ -86,10 +108,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
         food_management = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        customer_info = new javax.swing.JPanel();
         customer_check = new javax.swing.JButton();
         check_phoneNum = new javax.swing.JTextField();
         print = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        customer_info = new javax.swing.JTextArea();
         backgroud = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -272,20 +295,6 @@ public class MainMenuGUI extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(50, 20, 190, 100);
 
-        javax.swing.GroupLayout customer_infoLayout = new javax.swing.GroupLayout(customer_info);
-        customer_info.setLayout(customer_infoLayout);
-        customer_infoLayout.setHorizontalGroup(
-            customer_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
-        );
-        customer_infoLayout.setVerticalGroup(
-            customer_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(customer_info);
-        customer_info.setBounds(850, 200, 210, 220);
-
         customer_check.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         customer_check.setText("Check");
         customer_check.addActionListener(new java.awt.event.ActionListener() {
@@ -296,7 +305,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
         jPanel1.add(customer_check);
         customer_check.setBounds(960, 130, 90, 29);
 
-        check_phoneNum.setText("Input a phone numer");
+        check_phoneNum.setText("Input a phone number");
         jPanel1.add(check_phoneNum);
         check_phoneNum.setBounds(840, 80, 210, 30);
 
@@ -310,6 +319,13 @@ public class MainMenuGUI extends javax.swing.JFrame {
         });
         jPanel1.add(print);
         print.setBounds(930, 530, 130, 40);
+
+        customer_info.setColumns(20);
+        customer_info.setRows(5);
+        jScrollPane2.setViewportView(customer_info);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(850, 200, 210, 240);
 
         backgroud.setForeground(new java.awt.Color(204, 204, 204));
         backgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/background3.jpg"))); // NOI18N
@@ -548,16 +564,126 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
+        String id = String.valueOf(table_menu.getModel().getValueAt(table_menu.getSelectedRow(), 0));
+        String name = String.valueOf(table_menu.getModel().getValueAt(table_menu.getSelectedRow(), 1));
+        String size = String.valueOf(table_menu.getModel().getValueAt(table_menu.getSelectedRow(), 2));
+        String p = String.valueOf(table_menu.getModel().getValueAt(table_menu.getSelectedRow(), 3));
+        int amount = Integer.parseInt(String.valueOf(table_menu.getModel().getValueAt(table_menu.getSelectedRow(), 5)));
+        String description = amount + " " + name + "\t" + size;
+        
+        // remove dollar sign from price and convert it to double.
+        String convertPrice = p.replace("$", "");
+        double price = Double.parseDouble(convertPrice);
+        
+        Item item = new Item(description, price, amount);
+        
+        System.out.println(item.getDescription() + "\t\t" + item.getTotalPrice());
+        items.add(item);
+        if(pizzaClicked){
+           
+            pizzaDB = new PizzaDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                pizzaDB.decrementAmount(id, amount);
+            } catch (Exception ex) {
+                Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        
+        if(dishClicked){
+           
+            dishDB = new DishDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                dishDB.decrementAmount(id, amount);
+            } catch (Exception ex) {
+                Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        
+        if(sandwichClicked){
+           
+            sandwichDB = new SandwichDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                sandwichDB.decrementAmount(id, amount);
+            } catch (Exception ex) {
+                Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        
+        if(drinkClicked){
+           
+            drinkDB = new DrinkDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                drinkDB.decrementAmount(id, amount);
+            } catch (Exception ex) {
+                Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        
+        if(dessertClicked){
+           
+            dessertDB = new DessertDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                dessertDB.decrementAmount(id, amount);
+            } catch (Exception ex) {
+                Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        
+        
+        System.out.println(amount);
     }//GEN-LAST:event_saveActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-        PrintGUI print = new PrintGUI();
-        print.setVisible(true);
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String time = String.valueOf(dtf.format(now));
+        System.out.println(time);
+        
+        order = new Order(time, customer.getAddress(), customer.getPhoneNumber(), items);
+        
+        orderDB = new OrderDB(databaseName, dbUserName, dbPassword);
+        try {
+            orderDB.addOrder(order);
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        PrintGUI printGUI = new PrintGUI();
+        printGUI.printOrder(order.printOrder() + customer.printCustomer());
+        
+        items.removeAll(items);
+        printGUI.setVisible(true);
     }//GEN-LAST:event_printActionPerformed
 
     private void customer_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customer_checkActionPerformed
-        CustomerGUI customer = new CustomerGUI();
-        customer.setVisible(true);
+        
+        customerDB = new CustomerDB("sql5475007", "sql5475007", "avlj8CSFyF");
+        customer_info.setText("");
+        
+        try {
+            if(customerDB.isCustomer(check_phoneNum.getText())){
+                customer = customerDB.getCustomer(check_phoneNum.getText());
+                customer_info.setText(customer.printCustomer());           
+            }
+            else{
+                CustomerGUI customer = new CustomerGUI();
+                customer.setVisible(true);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_customer_checkActionPerformed
 
      public void close(){
@@ -722,7 +848,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     private javax.swing.JLabel backgroud;
     private javax.swing.JTextField check_phoneNum;
     private javax.swing.JButton customer_check;
-    private javax.swing.JPanel customer_info;
+    private javax.swing.JTextArea customer_info;
     private javax.swing.JButton dessert;
     private javax.swing.JButton dish;
     private javax.swing.JButton drink;
@@ -733,6 +859,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel label_check;
     private javax.swing.JButton logout;
     private javax.swing.JButton pizza;

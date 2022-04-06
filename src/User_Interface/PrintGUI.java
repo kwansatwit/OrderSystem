@@ -4,7 +4,12 @@
  */
 package User_Interface;
 
+import java.awt.TextArea;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -18,6 +23,12 @@ public class PrintGUI extends javax.swing.JFrame {
     public PrintGUI() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        
+    }
+    
+    public void printOrder(String orderReceipt){
+        orderText.setText(orderReceipt);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,11 +41,11 @@ public class PrintGUI extends javax.swing.JFrame {
 
         panel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        reportPanel = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        orderText = new javax.swing.JTextArea();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(546, 480));
 
         panel1.setLayout(null);
 
@@ -44,8 +55,13 @@ public class PrintGUI extends javax.swing.JFrame {
         jLabel9.setText("  Current Order");
         panel1.add(jLabel9);
         jLabel9.setBounds(60, 30, 330, 50);
-        panel1.add(reportPanel);
-        reportPanel.setBounds(60, 90, 330, 340);
+
+        orderText.setColumns(20);
+        orderText.setRows(5);
+        jScrollPane1.setViewportView(orderText);
+
+        panel1.add(jScrollPane1);
+        jScrollPane1.setBounds(60, 100, 410, 310);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/background3.jpg"))); // NOI18N
         panel1.add(background);
@@ -59,7 +75,7 @@ public class PrintGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
 
         pack();
@@ -104,7 +120,8 @@ public class PrintGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea orderText;
     private javax.swing.JPanel panel1;
-    private javax.swing.JScrollPane reportPanel;
     // End of variables declaration//GEN-END:variables
 }
