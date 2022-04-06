@@ -98,21 +98,24 @@ public class Order {
         }
         
         itemsStr += "--------------------------------------------";
-        itemsStr += "\n" + "Price:" + "\t\t" + "$" + totalPrice();
-        itemsStr += "\n" + "Tax:" + "\t\t" + "$" + getTax();
-        itemsStr += "\n" + "Total:" + "\t\t" + "$" + total_with_tax() + "\n"
+        itemsStr += "\n" + "Price:" + "\t\t" + "$" + total;
+        itemsStr += "\n" + "Tax:" + "\t\t" + "$" + tax;
+        itemsStr += "\n" + "Total:" + "\t\t" + "$" + totalWithTax + "\n"
                 + "----------------------------------------------" + "\n";
         
         return itemsStr;
     }
     
     public double totalPrice(){
-        //double total = 0.0;        
+        //double total = 0.0;
+        double total_price = 0.0;
         for(int i = 0; i < items.size(); i++){
-            total += items.get(i).getTotalPrice();
+            total_price += items.get(i).getTotalPrice();
         }
         
-        return Math.round(total * 100.0)/100.0;
+        total = Math.round(total_price * 100.0)/100.0;
+        
+        return total;
     }
     
     public double getTax(){
@@ -121,7 +124,9 @@ public class Order {
     }
     
     public double total_with_tax(){
-        return Math.round((total + tax) * 100.0)/100.0;
+        
+        totalWithTax = Math.round((total + tax) * 100.0)/100.0;
+        return totalWithTax;
         
     }
     

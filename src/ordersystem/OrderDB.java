@@ -48,8 +48,8 @@ public class OrderDB {
             con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
             //creating the statement
             String sql = "insert into ORDERS"
-                    + "(OrderID,OrderTime,OrderLocation,phoneNumber,items)"
-                    + "values(?,?,?,?,?)";
+                    + "(OrderID,OrderTime,OrderLocation,phoneNumber,items, price)"
+                    + "values(?,?,?,?,?,?)";
             st = con.prepareStatement(sql);
             
             // inserting order data into the database.
@@ -58,6 +58,7 @@ public class OrderDB {
             st.setString(3, order.getOrderLocation());
             st.setString(4, order.getPhoneNumber());
             st.setString(5, order.printItems());
+            st.setDouble(6, order.total_with_tax());
             st.execute();
         } finally {
             // Closing  the connection.

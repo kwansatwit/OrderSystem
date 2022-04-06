@@ -651,7 +651,9 @@ public class MainMenuGUI extends javax.swing.JFrame {
         System.out.println(time);
         
         order = new Order(time, customer.getAddress(), customer.getPhoneNumber(), items);
-        
+        order.totalPrice();
+        order.getTax();
+        order.total_with_tax();
         orderDB = new OrderDB(databaseName, dbUserName, dbPassword);
         try {
             orderDB.addOrder(order);
