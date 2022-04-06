@@ -3,6 +3,8 @@ import static java.lang.Character.isUpperCase;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -20,14 +22,14 @@ import org.apache.commons.lang3.RandomStringUtils;
  */
 public class TestMain {
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, Exception {
     	
-    	/*String databaseName = "sql5475007";
+    	String databaseName = "sql5475007";
     	String userName = "sql5475007";
-    	String password = "avlj8CSFyF!";
+    	String password = "avlj8CSFyF";
     	
     	
-    	DbConnection connection = new DbConnection(databaseName, userName, password);
+    	/*DbConnection connection = new DbConnection(databaseName, userName, password);
     	Connection con = connection.openConnection();    	
 
         Scanner input =  new Scanner(System.in);  
@@ -50,25 +52,57 @@ public class TestMain {
         String de = data.deCryption(); 
         System.out.println("Origin Pw: " + pw+" \nEncrypted: " + en + " \nDeCryption: " + de);*/
         
+        /*int rand = (int) (Math.random() * (10000000 - 1000000)) + 1000000;
+        System.out.println(rand);*/
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String time = String.valueOf(dtf.format(now));
+        System.out.println(time);  
+        
+        /*String id = "21351";
+        int amount = 11;
+        
+        PizzaDB pizzaDB = new PizzaDB(databaseName, userName, password);
+        
+        pizzaDB.decrementAmount(id, amount);
+        
+        String dishID = "18923";
+        
+        DishDB dishDB = new DishDB(databaseName, userName, password);
+        
+        dishDB.decrementAmount(dishID, amount);
+        
+        String text = java.text.MessageFormat.format("You''re about to delete {0} rows.", 5);
+        System.out.println(text);*/
+
+        String phoneNum = "6178919999";
+        
+        CustomerDB cDB = new CustomerDB("sql5475007", "sql5475007", "avlj8CSFyF");
+        
+        Customer customer = cDB.getCustomer(phoneNum);
+        
+        System.out.println(customer.printCustomer());
+        
+        System.out.println(cDB.isCustomer("6761223173"));
+        
         Pizza pizza = new Pizza("sadadss", "pepperoni pizza", "M", "tomato sauce", 14.99, 290);
         Dish dish = new Dish("khhj", "Lasagna", "L", 22.45, 190);
         Drink drink = new Drink("dsadads", "Margarita", "M", true, 60.56, 78);
         
         //System.out.println(pizza.toString());
         
-        Item item1 = new Item(pizza.toString(), pizza.getPrice());
-        Item item2 = new Item(dish.toString(), dish.getPrice());
-        Item item3 = new Item(drink.toString(), drink.getPrice());
+        Item item1 = new Item(pizza.toString(), pizza.getPrice(), 3);
+        Item item2 = new Item(dish.toString(), dish.getPrice(), 2);
+        Item item3 = new Item(drink.toString(), drink.getPrice(), 1);
         
         
         ArrayList<Item> items = new ArrayList<>();
         items.add(item1);
         items.add(item2);
         items.add(item3);
-        Order order = new Order("asdad", "09:45 pm", "122 main st. Boston, MA", "617-999-9891", items);
+        Order order = new Order("09:45 pm", "122 main st. Boston, MA", "617-999-9891", items);
         System.out.println(order.printOrder());
-        System.out.println("---------------------");
-        System.out.println(order.totalPrice());
 
        
 

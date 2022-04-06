@@ -13,11 +13,13 @@ public class Item {
 
     private String description;
     private double price;
+    private int amount;
 
-    public Item(String name, double price) {
+    public Item(String name, double price, int amount) {
         
         setDescription(name);
         setPrice(price);
+        setAmount(amount);
     }
 
     public String getDescription() {
@@ -34,6 +36,18 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+    
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+    
+    public double getTotalPrice(){
+        return Math.round((price * amount)*100.0)/100.0;
     }
 
 }

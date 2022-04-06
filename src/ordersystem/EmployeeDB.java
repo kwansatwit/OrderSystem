@@ -96,7 +96,7 @@ public class EmployeeDB {
                     + "values(?,?,?,?,?,?,?,?,?,?)";
             st = con.prepareStatement(sql);
             
-            // inserting contact data into the database.
+            // inserting employee data into the database.
             st.setString(1, employee.getUserName());
             st.setString(2, employee.getFirstName());
             st.setString(3, employee.getLastName());

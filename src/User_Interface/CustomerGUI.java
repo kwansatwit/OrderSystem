@@ -4,13 +4,27 @@
  */
 package User_Interface;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import ordersystem.Customer;
+import ordersystem.CustomerDB;
 
 /**
  *
  * @author zhangf2
  */
 public class CustomerGUI extends javax.swing.JFrame {
+    
+    String databaseName = "sql5475007";
+    String dbUserName = "sql5475007";
+    String dbPassword = "avlj8CSFyF";
+    
+    CustomerDB customerDB = null;
+    Customer customer = null;
+    
+            
 
     /**
      * Creates new form CustomerGui
@@ -39,11 +53,11 @@ public class CustomerGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        phone = new javax.swing.JTextField();
-        firstName = new javax.swing.JTextField();
-        lastName = new javax.swing.JTextField();
-        email = new javax.swing.JTextField();
-        address = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
+        firstNameField = new javax.swing.JTextField();
+        lastNameField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+        addressField = new javax.swing.JTextField();
         BtnAdd = new javax.swing.JButton();
         BtnEdit = new javax.swing.JButton();
         BtnSave = new javax.swing.JButton();
@@ -90,25 +104,25 @@ public class CustomerGUI extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
         jLabel9.setBounds(70, 40, 410, 50);
 
-        phone.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(phone);
-        phone.setBounds(180, 140, 200, 31);
+        phoneField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(phoneField);
+        phoneField.setBounds(180, 140, 200, 31);
 
-        firstName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(firstName);
-        firstName.setBounds(180, 200, 200, 31);
+        firstNameField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(firstNameField);
+        firstNameField.setBounds(180, 200, 200, 31);
 
-        lastName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(lastName);
-        lastName.setBounds(180, 260, 200, 31);
+        lastNameField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(lastNameField);
+        lastNameField.setBounds(180, 260, 200, 31);
 
-        email.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(email);
-        email.setBounds(180, 320, 200, 31);
+        emailField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(emailField);
+        emailField.setBounds(180, 320, 200, 31);
 
-        address.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(address);
-        address.setBounds(180, 390, 200, 31);
+        addressField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(addressField);
+        addressField.setBounds(180, 390, 200, 31);
 
         BtnAdd.setBackground(new java.awt.Color(204, 204, 204));
         BtnAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -183,6 +197,29 @@ public class CustomerGUI extends javax.swing.JFrame {
 
     private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
         // TODO add your handling code here:
+        
+        customerDB = new CustomerDB(databaseName, dbUserName, dbPassword);
+        
+        String phoneNumber = phoneField.getText();
+        String firstName = firstNameField.getText();
+        String lastName = lastNameField.getText();
+        String email = emailField.getText();
+        String address = addressField.getText();
+        
+        customer = new Customer(phoneNumber, firstName, lastName, email, address);
+        
+        try {
+            customerDB.addCustomer(customer);
+            JOptionPane.showMessageDialog(this,"Customer has been added to the database!");
+            phoneField.setText("");
+            firstNameField.setText("");
+            lastNameField.setText("");
+            emailField.setText("");
+            addressField.setText("");
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_BtnAddActionPerformed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
@@ -238,10 +275,10 @@ public class CustomerGUI extends javax.swing.JFrame {
     private javax.swing.JButton BtnEdit;
     private javax.swing.JButton BtnRemove;
     private javax.swing.JButton BtnSave;
-    private javax.swing.JTextField address;
+    private javax.swing.JTextField addressField;
     private javax.swing.JLabel background;
-    private javax.swing.JTextField email;
-    private javax.swing.JTextField firstName;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -249,7 +286,7 @@ public class CustomerGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField lastName;
-    private javax.swing.JTextField phone;
+    private javax.swing.JTextField lastNameField;
+    private javax.swing.JTextField phoneField;
     // End of variables declaration//GEN-END:variables
 }

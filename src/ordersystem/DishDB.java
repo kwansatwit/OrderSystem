@@ -7,6 +7,7 @@ package ordersystem;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class DishDB {
     String databaseName;
     String username;
     String password;
+    
+    int amountLeft;
 
     /**
      * Constructor.
@@ -69,6 +72,79 @@ public class DishDB {
         }
 
         return dishes;
+    }
+    
+    /**
+     * method that retrieves a specific dish from the database.
+     * @param number
+     * @return
+     * @throws Exception 
+     */
+    public void getDish(String id) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {
+            //get connection to the database
+            //con = dataSource.getConnection();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //create sql to get the contact from the database
+            String sql = "select * from DISH where DishID=?";
+            //create prepared statement
+            st = con.prepareStatement(sql);
+            //set parameters
+            st.setString(1, id);
+            //execute statement
+            rs = st.executeQuery();
+            //retrieve data from the resultSet
+            if (rs.next()) {
+                amountLeft = rs.getInt("amountLeft");
+            } else {
+                throw new Exception("could not find the dish with id:" + id + " !");
+            }
+
+        } finally {
+            close(con, st, rs);
+        }
+
+    }
+    
+    /**
+     * method that decrement a specific dish amount left with the amount entered.
+     * @param id, amount
+     * @throws Exception 
+     */
+    public void decrementAmount(String id, int amount) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        
+        getDish(id);
+        System.out.println(amountLeft);
+        System.out.println(amount);
+        
+        int newAmount = amountLeft - amount;
+        System.out.println(newAmount);
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            String sql = "update DISH "
+                    + "set amountLeft=? where DishID=?";
+            
+            st = con.prepareStatement(sql);
+            
+            st.setInt(1, newAmount);
+            st.setString(2, id);
+            
+            st.execute();
+            
+            System.out.println("amount updated!");
+
+        } finally {
+            close(con, st, null);
+        }
     }
 
     /**

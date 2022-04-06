@@ -7,22 +7,20 @@ package ordersystem;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ahmed Diab
  */
-public class PizzaDB {
+public class CustomerDB {
 
     String databaseName;
     String username;
     String password;
-    
-    int amountLeft;
 
     /**
      * Constructor.
@@ -31,57 +29,21 @@ public class PizzaDB {
      * @param username
      * @param password
      */
-    public PizzaDB(String databaseName, String username, String password) {
+    public CustomerDB(String databaseName, String username, String password) {
         this.databaseName = databaseName;
         this.username = username;
         this.password = password;
 
     }
-
-    public ArrayList<Pizza> getPizzas() throws Exception {
-        ArrayList<Pizza> pizzas = new ArrayList<>();
-        //initialization 
-        Connection con = null;
-        Statement st = null;
-        ResultSet rs = null;
-        try {
-            // getting the connection
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
-            // creating statements
-            String sql = "select * from PIZZA order by name";
-            st = con.createStatement();
-            // execute query
-            rs = st.executeQuery(sql);
-            // processing  the resultSet
-            while (rs.next()) {
-                //retrieving data from the dataBase
-                String id = rs.getString("PizzaID");
-                String name = rs.getString("name");
-                String size = rs.getString("size");
-                double price = rs.getDouble("price");
-                int amountLeft = rs.getInt("amountLeft");
-                String sauce = rs.getString("sauce");
-                // creating a new pizza object
-                Pizza pizza = new Pizza(id, name, size, sauce, price, amountLeft);
-                // adding the pizza to the list
-                pizzas.add(pizza);
-            }
-        } finally {
-            // Closing  the connection
-            close(con, st, rs);
-        }
-
-        return pizzas;
-    }
     
     /**
-     * method that retrieves a specific pizza from the database.
+     * method that retrieves a specific customer from the database.
      * @param number
      * @return
      * @throws Exception 
      */
-    public void getPizza(String id) throws Exception {
+    public Customer getCustomer(String number) throws Exception {
+        Customer customer = null;
         Connection con = null;
         PreparedStatement st = null;
         ResultSet rs = null;
@@ -91,61 +53,103 @@ public class PizzaDB {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
             //create sql to get the contact from the database
-            String sql = "select * from PIZZA where PizzaID=?";
+            String sql = "select * from CUSTOMER where phoneNumber=?";
             //create prepared statement
             st = con.prepareStatement(sql);
             //set parameters
-            st.setString(1, id);
+            st.setString(1, number);
             //execute statement
             rs = st.executeQuery();
             //retrieve data from the resultSet
             if (rs.next()) {
-                amountLeft = rs.getInt("amountLeft");
+                String phoneNumber = rs.getString("phoneNumber");
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                customer = new Customer(phoneNumber, firstName, lastName, email, address);
             } else {
-                throw new Exception("could not find the pizza with id:" + id + " !");
+                throw new Exception("could not find the customer with phone number:" + number + " !");
             }
 
         } finally {
             close(con, st, rs);
         }
 
+        return customer;
+
     }
     
     /**
-     * method that decrement a specific pizza amount left with the amount entered.
-     * @param id, amount
+     * method that checks if a customer with this phone number is in our database or no.
+     * @param number
+     * @return
      * @throws Exception 
      */
-    public void decrementAmount(String id, int amount) throws Exception {
+    public boolean isCustomer(String number) throws Exception {
+        boolean isCustomer;
         Connection con = null;
         PreparedStatement st = null;
         ResultSet rs = null;
-        
-        getPizza(id);
-        System.out.println(amountLeft);
-        System.out.println(amount);
-        
-        int newAmount = amountLeft - amount;
-        System.out.println(newAmount);
-
         try {
+            //get connection to the database
+            //con = dataSource.getConnection();
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
-            String sql = "update PIZZA "
-                    + "set amountLeft=? where PizzaID=?";
-            
+            //create sql to get the contact from the database
+            String sql = "select * from CUSTOMER where phoneNumber=?";
+            //create prepared statement
             st = con.prepareStatement(sql);
-            
-            st.setInt(1, newAmount);
-            st.setString(2, id);
-            
-            st.execute();
-            
-            System.out.println("amount updated!");
+            //set parameters
+            st.setString(1, number);
+            //execute statement
+            rs = st.executeQuery();
+            //retrieve data from the resultSet
+            if (rs.next()) {
+                isCustomer = true;
+            } else {
+                isCustomer = false;
+            }
 
         } finally {
+            close(con, st, rs);
+        }
+
+        return isCustomer;
+
+    }
+    
+    /**
+     * method that add customer to the database.
+     * @param Customer
+     * @throws Exception 
+     */
+    public void addCustomer(Customer customer) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            //con = dataSource.getConnection();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //creating the statement
+            String sql = "insert into CUSTOMER"
+                    + "(phoneNumber,firstName,lastName,email,address)"
+                    + "values(?,?,?,?,?)";
+            st = con.prepareStatement(sql);
+            
+            // inserting customer data into the database.
+            st.setString(1, customer.getPhoneNumber());
+            st.setString(2, customer.getFirstName());
+            st.setString(3, customer.getLastName());
+            st.setString(4, customer.getEmail());
+            st.setString(5, customer.getAddress());
+            st.execute();
+        } finally {
+            // Closing  the connection.
             close(con, st, null);
         }
+
     }
 
     /**
@@ -174,3 +178,4 @@ public class PizzaDB {
 
     }
 }
+
