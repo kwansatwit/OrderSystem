@@ -34,7 +34,10 @@ import ordersystem.SandwichDB;
 
 /**
  * 
- * @author zhangf2
+ * @author zhangf2, Ahmed Diab
+ * 4/5/2022 - Ha
+ * modified button function based on permission
+ * created a constructor to get value from login page
  */
 public class MainMenuGUI extends javax.swing.JFrame {
     
@@ -66,6 +69,9 @@ public class MainMenuGUI extends javax.swing.JFrame {
     boolean sandwichClicked = false;
     boolean drinkClicked = false;
     boolean dessertClicked = false;
+    
+    String id;
+    int access;
 
     public MainMenuGUI() throws Exception {
         initComponents();
@@ -86,6 +92,13 @@ public class MainMenuGUI extends javax.swing.JFrame {
         }
         addRowToJTable(pizzas);*/
         
+    }
+    public MainMenuGUI(String id, int access) throws Exception{
+        
+        this.id = id;
+        this.access = access;
+        initComponents();
+    
     }
 
     @SuppressWarnings("unchecked")
@@ -421,7 +434,12 @@ public class MainMenuGUI extends javax.swing.JFrame {
             Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_employee_managementActionPerformed
-
+    
+    public void setButton(){
+        food_management.setVisible(false);
+        employee_management.setVisible(false);
+    }
+    
     private void food_managementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_food_managementActionPerformed
         ProductGUI food = new ProductGUI();
         food.setVisible(true);

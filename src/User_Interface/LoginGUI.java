@@ -134,7 +134,7 @@ public class LoginGUI extends javax.swing.JFrame {
             String username, password;
             username = text_username.getText();
             password = new String(text_password.getPassword());
-            MainMenuGUI menu = new MainMenuGUI();
+            MainMenuGUI menu;
             
             String databaseName = "sql5475007";
             String dbUserName = "sql5475007";
@@ -151,6 +151,12 @@ public class LoginGUI extends javax.swing.JFrame {
                     welcome.setVisible(false); //you can't see me!
                     //dispose(); //Destroy the JFrame object
                     JOptionPane.showMessageDialog(this,"login sucess!");
+                    int access = inputEmp.getAccess(username);
+                    menu = new MainMenuGUI(username,inputEmp.getAccess(username));
+                    System.out.print("access = " + access);
+                    if(access == 0){
+                        menu.setButton();
+                    }
                     menu.setVisible(true);
                 }
                 else{

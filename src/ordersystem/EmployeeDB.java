@@ -14,6 +14,8 @@ import java.sql.Statement;
 /**
  *
  * @author Ahmed Diab
+ * 4/5/2022 - Ha
+ * created a getAccess function to get employee access to set up permission function
  */
 public class EmployeeDB {
     
@@ -74,6 +76,40 @@ public class EmployeeDB {
         }
 
         return isEmp;
+    }
+    
+    /**
+     * 
+     * @param empUserName
+     * @return
+     * @throws Exception 
+     */
+    public int getAccess (String empUserName) throws Exception{
+        int access = -1;
+                //initialization 
+        Connection con = null;
+        Statement st = null;
+        ResultSet rs = null;
+          try {
+            // getting the connection
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            // creating statements
+            String sql ="Select access from EMPLOYEE where userName='"+empUserName+"'";
+            st = con.createStatement();
+            // execute query
+            rs = st.executeQuery(sql);
+            // processing  the resultSet
+            while (rs.next()) {
+                 access = rs.getInt("access");
+                System.out.println(empUserName+ " " + access);
+            }
+        } finally {
+            // Closing  the connection
+            close(con, st, rs);
+        }
+          System.out.print("IN db access: " + access);
+          return access;
     }
     
     
