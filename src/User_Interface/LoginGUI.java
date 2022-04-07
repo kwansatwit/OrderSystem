@@ -2,6 +2,8 @@ package User_Interface;
 
 /**
  * @author zhangf2, Ahmed Diab
+ * 4/5/2022 - Ha
+ * got employee permission from database and passed into mainmenu page
  */
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
