@@ -101,7 +101,7 @@ public class TestMain {
         items.add(item1);
         items.add(item2);
         items.add(item3);
-        Order order = new Order("09:45 pm", "122 main st. Boston, MA", "617-999-9891", items);
+        Order order = new Order("09:45 pm", "04/07/2022", "122 main st. Boston, MA", "617-999-9891", items);
         System.out.println(order.printOrder());
 
        

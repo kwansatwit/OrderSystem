@@ -649,8 +649,9 @@ public class MainMenuGUI extends javax.swing.JFrame {
         LocalDateTime now = LocalDateTime.now();
         String time = String.valueOf(dtf.format(now));
         System.out.println(time);
+        String[] dateTime = time.split(" ");
         
-        order = new Order(time, customer.getAddress(), customer.getPhoneNumber(), items);
+        order = new Order(dateTime[1], dateTime[0], customer.getAddress(), customer.getPhoneNumber(), items);
         order.totalPrice();
         order.getTax();
         order.total_with_tax();
