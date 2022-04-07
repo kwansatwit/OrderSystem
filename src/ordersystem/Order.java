@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Order {
     private String orderID;
     private String orderTime;
+    private String orderDate;
     private String orderLocation;
     private String phoneNumber;
     private ArrayList<Item> items;
@@ -29,8 +30,9 @@ public class Order {
        
     }
     
-    public Order(String orderTime, String orderLocation, String phoneNumber, ArrayList<Item> items) {
+    public Order(String orderTime, String orderDate, String orderLocation, String phoneNumber, ArrayList<Item> items) {
         this.orderTime = orderTime;
+        this.orderDate = orderDate;
         this.orderLocation = orderLocation;
         this.phoneNumber = phoneNumber;
         this.items = items;
@@ -52,6 +54,14 @@ public class Order {
 
     public void setOrderTime(String orderTime) {
         this.orderTime = orderTime;
+    }
+    
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
     public String getOrderLocation() {
@@ -91,6 +101,7 @@ public class Order {
         String itemsStr = "";
         
         itemsStr += "Order ID: " + orderID + "\n";
+        itemsStr += "Order Date: " + orderDate + "\n";
         itemsStr += "Time: " + orderTime + "\n";
         
         for(int i = 0; i < items.size(); i++){
