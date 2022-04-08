@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Date; 
 
 /**
  *
@@ -52,10 +53,11 @@ public class OrderDB {
                     + "values(?,?,?,?,?,?,?)";
             st = con.prepareStatement(sql);
             
+            //Date date = Date.valueOf(order.getOrderDate());    
             // inserting order data into the database.
             st.setString(1, order.getOrderID());
             st.setString(2, order.getOrderTime());
-            st.setString(3, order.getOrderDate());
+            st.setDate(3, order.getOrderDate());
             st.setString(4, order.getOrderLocation());
             st.setString(5, order.getPhoneNumber());
             st.setString(6, order.printItems());

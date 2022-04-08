@@ -160,6 +160,7 @@ public class LoginGUI extends javax.swing.JFrame {
                         menu.setButton();
                     }
                     menu.setVisible(true);
+                    this.setVisible(false);
                 }
                 else{
                     JOptionPane.showMessageDialog(this,"Invalid username or password!");

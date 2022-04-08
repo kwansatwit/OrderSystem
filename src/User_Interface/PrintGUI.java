@@ -56,6 +56,7 @@ public class PrintGUI extends javax.swing.JFrame {
         panel1.add(jLabel9);
         jLabel9.setBounds(60, 30, 330, 50);
 
+        orderText.setEditable(false);
         orderText.setColumns(20);
         orderText.setRows(5);
         jScrollPane1.setViewportView(orderText);

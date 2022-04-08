@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ordersystem;
-
+import java.sql.Date; 
 import java.util.ArrayList;
 
 /**
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Order {
     private String orderID;
     private String orderTime;
-    private String orderDate;
+    private Date orderDate;
     private String orderLocation;
     private String phoneNumber;
     private ArrayList<Item> items;
@@ -30,7 +30,7 @@ public class Order {
        
     }
     
-    public Order(String orderTime, String orderDate, String orderLocation, String phoneNumber, ArrayList<Item> items) {
+    public Order(String orderTime, Date orderDate, String orderLocation, String phoneNumber, ArrayList<Item> items) {
         this.orderTime = orderTime;
         this.orderDate = orderDate;
         this.orderLocation = orderLocation;
@@ -56,11 +56,11 @@ public class Order {
         this.orderTime = orderTime;
     }
     
-    public String getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 

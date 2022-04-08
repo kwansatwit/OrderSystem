@@ -4,6 +4,7 @@ package User_Interface;
 */
 import java.awt.Color;
 import java.awt.List;
+import java.sql.Date; 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
@@ -73,7 +74,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     String id;
     int access;
 
-    public MainMenuGUI() throws Exception {
+    public MainMenuGUI(){
         initComponents();
         /*String databaseName = "sql5475007";
         String dbUserName = "sql5475007";
@@ -319,6 +320,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
         customer_check.setBounds(960, 130, 90, 29);
 
         check_phoneNum.setText("Input a phone number");
+        check_phoneNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check_phoneNumActionPerformed(evt);
+            }
+        });
         jPanel1.add(check_phoneNum);
         check_phoneNum.setBounds(840, 80, 210, 30);
 
@@ -663,13 +669,14 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String time = String.valueOf(dtf.format(now));
         System.out.println(time);
         String[] dateTime = time.split(" ");
         
-        order = new Order(dateTime[1], dateTime[0], customer.getAddress(), customer.getPhoneNumber(), items);
+        Date date = Date.valueOf(dateTime[0]); 
+        order = new Order(dateTime[1], date, customer.getAddress(), customer.getPhoneNumber(), items);
         order.totalPrice();
         order.getTax();
         order.total_with_tax();
@@ -706,6 +713,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_customer_checkActionPerformed
+
+    private void check_phoneNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_phoneNumActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_check_phoneNumActionPerformed
 
      public void close(){
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
@@ -796,7 +808,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 rowData[0] = sandwiches.get(i).getId();
                 rowData[1] = sandwiches.get(i).getName();
                 rowData[2] = sandwiches.get(i).getSize();
-                rowData[3] = "$" + dishes.get(i).getPrice();
+                rowData[3] = "$" + sandwiches.get(i).getPrice();
                 rowData[4] = sandwiches.get(i).getAmountLeft();
 
                 model.insertRow(i, rowData);

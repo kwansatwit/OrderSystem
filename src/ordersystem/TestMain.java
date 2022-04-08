@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.sql.Date; 
 import org.apache.commons.lang3.RandomStringUtils;
 
 /*
@@ -101,7 +102,10 @@ public class TestMain {
         items.add(item1);
         items.add(item2);
         items.add(item3);
-        Order order = new Order("09:45 pm", "04/07/2022", "122 main st. Boston, MA", "617-999-9891", items);
+        
+       // Date date = "04/07/2022";
+        Date date = Date.valueOf("2022-04-07"); 
+        Order order = new Order("09:45 pm", date, "122 main st. Boston, MA", "617-999-9891", items);
         System.out.println(order.printOrder());
 
        
