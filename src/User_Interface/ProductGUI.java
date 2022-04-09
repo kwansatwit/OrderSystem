@@ -35,11 +35,13 @@ public class ProductGUI extends javax.swing.JFrame {
         BtnEdit = new javax.swing.JButton();
         BtnSave = new javax.swing.JButton();
         BtnRemove = new javax.swing.JButton();
+        foodType = new javax.swing.JTextField();
         productID = new javax.swing.JTextField();
         productName = new javax.swing.JTextField();
         productSize = new javax.swing.JTextField();
         productPrice = new javax.swing.JTextField();
         inventory = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -56,7 +58,7 @@ public class ProductGUI extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Product Management");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(150, 50, 420, 50);
+        jLabel9.setBounds(130, 30, 420, 50);
 
         BtnAdd.setBackground(new java.awt.Color(204, 204, 204));
         BtnAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -69,7 +71,7 @@ public class ProductGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnAdd);
-        BtnAdd.setBounds(470, 160, 110, 40);
+        BtnAdd.setBounds(460, 130, 110, 40);
 
         BtnEdit.setBackground(new java.awt.Color(204, 204, 204));
         BtnEdit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -82,7 +84,7 @@ public class ProductGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnEdit);
-        BtnEdit.setBounds(470, 240, 110, 40);
+        BtnEdit.setBounds(460, 210, 110, 40);
 
         BtnSave.setBackground(new java.awt.Color(204, 204, 204));
         BtnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -95,7 +97,7 @@ public class ProductGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnSave);
-        BtnSave.setBounds(470, 320, 110, 40);
+        BtnSave.setBounds(460, 290, 110, 40);
 
         BtnRemove.setBackground(new java.awt.Color(204, 204, 204));
         BtnRemove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -108,15 +110,24 @@ public class ProductGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnRemove);
-        BtnRemove.setBounds(470, 400, 110, 40);
+        BtnRemove.setBounds(460, 380, 110, 40);
+
+        foodType.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        foodType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foodTypeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(foodType);
+        foodType.setBounds(190, 110, 200, 31);
 
         productID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jPanel1.add(productID);
-        productID.setBounds(190, 160, 200, 31);
+        productID.setBounds(190, 170, 200, 31);
 
         productName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jPanel1.add(productName);
-        productName.setBounds(190, 220, 200, 31);
+        productName.setBounds(190, 230, 200, 31);
 
         productSize.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jPanel1.add(productSize);
@@ -134,6 +145,12 @@ public class ProductGUI extends javax.swing.JFrame {
         });
         jPanel1.add(inventory);
         inventory.setBounds(190, 420, 200, 31);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Food Type :");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(60, 110, 110, 30);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,7 +184,7 @@ public class ProductGUI extends javax.swing.JFrame {
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/background3.jpg"))); // NOI18N
         jPanel1.add(background);
-        background.setBounds(0, 0, 650, 531);
+        background.setBounds(0, 0, 620, 531);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,6 +220,10 @@ public class ProductGUI extends javax.swing.JFrame {
     private void inventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inventoryActionPerformed
+
+    private void foodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foodTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foodTypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,12 +266,14 @@ public class ProductGUI extends javax.swing.JFrame {
     private javax.swing.JButton BtnRemove;
     private javax.swing.JButton BtnSave;
     private javax.swing.JLabel background;
+    private javax.swing.JTextField foodType;
     private javax.swing.JTextField inventory;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField productID;

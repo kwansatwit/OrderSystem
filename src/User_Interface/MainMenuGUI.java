@@ -107,7 +107,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel_menu = new javax.swing.JLabel();
+        management = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         sandwich = new javax.swing.JButton();
         pizza = new javax.swing.JButton();
@@ -127,17 +127,19 @@ public class MainMenuGUI extends javax.swing.JFrame {
         print = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         customer_info = new javax.swing.JTextArea();
+        report = new javax.swing.JButton();
+        jLabel_menu1 = new javax.swing.JLabel();
         backgroud = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
-        jLabel_menu.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
-        jLabel_menu.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_menu.setText("Order Menu");
-        jPanel1.add(jLabel_menu);
-        jLabel_menu.setBounds(210, 60, 290, 50);
+        management.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        management.setForeground(new java.awt.Color(255, 255, 255));
+        management.setText("Management :");
+        jPanel1.add(management);
+        management.setBounds(590, 40, 120, 50);
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -257,11 +259,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(200, 140, 640, 440);
 
-        label_check.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        label_check.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         label_check.setForeground(new java.awt.Color(255, 255, 255));
         label_check.setText("Customer Information:");
         jPanel1.add(label_check);
-        label_check.setBounds(850, 160, 160, 40);
+        label_check.setBounds(860, 160, 220, 40);
 
         save.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Button-Ok-icon.png"))); // NOI18N
@@ -272,17 +274,17 @@ public class MainMenuGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(save);
-        save.setBounds(930, 460, 130, 40);
+        save.setBounds(930, 480, 130, 40);
 
         employee_management.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        employee_management.setText("Employee Management");
+        employee_management.setText("Employee");
         employee_management.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employee_managementActionPerformed(evt);
             }
         });
         jPanel1.add(employee_management);
-        employee_management.setBounds(550, 90, 190, 40);
+        employee_management.setBounds(720, 90, 110, 40);
 
         logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         logout.setText("Log out");
@@ -292,18 +294,18 @@ public class MainMenuGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(logout);
-        logout.setBounds(960, 30, 90, 30);
+        logout.setBounds(960, 31, 90, 29);
 
         food_management.setBackground(new java.awt.Color(204, 204, 204));
         food_management.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        food_management.setText("Food Management");
+        food_management.setText("Food ");
         food_management.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 food_managementActionPerformed(evt);
             }
         });
         jPanel1.add(food_management);
-        food_management.setBounds(550, 30, 190, 38);
+        food_management.setBounds(590, 90, 110, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/addItem.png"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -317,16 +319,15 @@ public class MainMenuGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(customer_check);
-        customer_check.setBounds(960, 130, 90, 29);
+        customer_check.setBounds(960, 120, 90, 30);
 
-        check_phoneNum.setText("Input a phone number");
         check_phoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 check_phoneNumActionPerformed(evt);
             }
         });
         jPanel1.add(check_phoneNum);
-        check_phoneNum.setBounds(840, 80, 210, 30);
+        check_phoneNum.setBounds(860, 80, 190, 30);
 
         print.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         print.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/print48.png"))); // NOI18N
@@ -344,7 +345,25 @@ public class MainMenuGUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(customer_info);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(850, 200, 210, 240);
+        jScrollPane2.setBounds(860, 200, 200, 260);
+
+        report.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/edit-validated-icon (1).png"))); // NOI18N
+        report.setText("Report");
+        report.setToolTipText("");
+        report.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportActionPerformed(evt);
+            }
+        });
+        jPanel1.add(report);
+        report.setBounds(720, 40, 110, 40);
+
+        jLabel_menu1.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
+        jLabel_menu1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_menu1.setText("Order Menu");
+        jPanel1.add(jLabel_menu1);
+        jLabel_menu1.setBounds(270, 50, 320, 50);
 
         backgroud.setForeground(new java.awt.Color(204, 204, 204));
         backgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/background3.jpg"))); // NOI18N
@@ -444,6 +463,8 @@ public class MainMenuGUI extends javax.swing.JFrame {
     public void setButton(){
         food_management.setVisible(false);
         employee_management.setVisible(false);
+        report.setVisible(false);
+        management.setVisible(false);
     }
     
     private void food_managementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_food_managementActionPerformed
@@ -719,6 +740,17 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_check_phoneNumActionPerformed
 
+    private void reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportActionPerformed
+        try {
+            // TODO add your handling code here:
+            ReportGUI repo = new ReportGUI();
+            repo.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_reportActionPerformed
+
      public void close(){
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
@@ -888,15 +920,17 @@ public class MainMenuGUI extends javax.swing.JFrame {
     private javax.swing.JButton employee_management;
     private javax.swing.JButton food_management;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel_menu;
+    private javax.swing.JLabel jLabel_menu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel label_check;
     private javax.swing.JButton logout;
+    private javax.swing.JLabel management;
     private javax.swing.JButton pizza;
     private javax.swing.JButton print;
+    private javax.swing.JButton report;
     private javax.swing.JButton sandwich;
     private javax.swing.JButton save;
     private javax.swing.JTable table_menu;

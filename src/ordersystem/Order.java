@@ -105,7 +105,7 @@ public class Order {
         itemsStr += "Time: " + orderTime + "\n";
         
         for(int i = 0; i < items.size(); i++){
-            itemsStr += (items.get(i).getDescription() + "\t\t" + items.get(i).getTotalPrice() + "\n");
+            itemsStr += (items.get(i).getDescription() + "\t" + items.get(i).getTotalPrice() + "\n");
         }
         
         itemsStr += "--------------------------------------------";
