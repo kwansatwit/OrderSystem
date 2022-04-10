@@ -192,7 +192,7 @@ public class DrinkDB {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
             //create sql to delete the drink from the database
-            String sql = "delete  from DRINK where DrinkID=?";
+            String sql = "delete from DRINK where DrinkID=?";
             //create prepared statement
             st = con.prepareStatement(sql);
             //set parameters

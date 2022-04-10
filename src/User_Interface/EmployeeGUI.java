@@ -19,6 +19,8 @@ public class EmployeeGUI extends javax.swing.JFrame {
     String databaseName = "sql5475007";
     String dbUserName = "sql5475007";
     String dbPassword = "avlj8CSFyF";
+    
+    EmployeeDB employeeDB = null;
    // EmployeeDB addEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
 
     // close current page without close the main menu page
@@ -368,6 +370,19 @@ public class EmployeeGUI extends javax.swing.JFrame {
 
     private void BtnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRemoveActionPerformed
         // TODO add your handling code here:
+        
+        String username = userName.getText();
+        
+        employeeDB = new EmployeeDB(databaseName, dbUserName, dbPassword);
+        
+        try {
+            System.out.println(username);
+            employeeDB.deleteEmployee(username);
+            JOptionPane.showMessageDialog(this,"Employee has been deleted from the database.");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"There is no employee with this username.");
+            Logger.getLogger(EmployeeGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_BtnRemoveActionPerformed
 
     private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed

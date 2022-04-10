@@ -151,6 +151,33 @@ public class EmployeeDB {
 
     }
     
+    /**
+     * method that deletes a specific employee from the database.
+     * @param username
+     * @throws Exception 
+     */
+    public void deleteEmployee(String empUsername) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //create sql to delete the employee from the database
+            String sql = "delete from EMPLOYEE where userName=?";
+            //create prepared statement
+            st = con.prepareStatement(sql);
+            //set parameters
+            st.setString(1, empUsername);
+            //execute statement
+            st.execute();
+
+        } finally {
+            close(con, st, null);
+        }
+
+    }
+    
     private static void close(Connection con, Statement st, ResultSet rs) throws Exception {
         try {
             if (con != null) {
