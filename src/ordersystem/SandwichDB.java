@@ -145,6 +145,91 @@ public class SandwichDB {
             close(con, st, null);
         }
     }
+    
+    /**
+     * method that add sandwich to the database.
+     * @param Sandwich
+     * @throws Exception 
+     */
+    public void addSandwich(Sandwich sandwich) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            //con = dataSource.getConnection();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //creating the statement
+            String sql = "insert into SANDWICH"
+                    + "(SandwichID,name,size,price,amountLeft)"
+                    + "values(?,?,?,?,?)";
+            st = con.prepareStatement(sql);
+            
+            // inserting sandwich data into the database.
+            st.setString(1, sandwich.getId());
+            st.setString(2, sandwich.getName());
+            st.setString(3, sandwich.getSize());
+            st.setDouble(4, sandwich.getPrice());
+            st.setInt(5, sandwich.getAmountLeft());
+            st.execute();
+        } finally {
+            // Closing  the connection.
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that deletes a specific dish from the database.
+     * @param sandwichID
+     * @throws Exception 
+     */
+    public void deleteSandwich(String sandwichID) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //create sql to delete the sandwich from the database
+            String sql = "delete  from SANDWICH where SandwichID=?";
+            //create prepared statement
+            st = con.prepareStatement(sql);
+            //set parameters
+            st.setString(1, sandwichID);
+            //execute statement
+            st.execute();
+
+        } finally {
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that updates a specific sandwich amount left in the database.
+     * @param amount
+     * @throws Exception 
+     */
+    public void updateSandwichAmount(String id, int amount) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            String sql = "update SANDWICH "
+                    + "set amountLeft=? where SandwichID=?";
+            st = con.prepareStatement(sql);
+
+            st.setInt(1, amount);
+            st.setString(2, id);
+            st.execute();
+
+        } finally {
+            close(con, st, null);
+        }
+    }
 
     /**
      * method that close the connection.

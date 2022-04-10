@@ -11,19 +11,8 @@ package ordersystem;
  */
 public class Drink extends Food{
 
-    private boolean isAlcoholic;
-
-    public Drink(String id, String name, String size, boolean isAlcoholic, double price, int amountLeft) {
+    public Drink(String id, String name, String size, double price, int amountLeft) {
         super(id, name, size, price, amountLeft);
-        this.isAlcoholic = isAlcoholic;
-    }
-
-    public boolean getIsAlcoholic() {
-        return isAlcoholic;
-    }
-
-    public void setIsAlcoholic(boolean isAlcoholic) {
-        this.isAlcoholic = isAlcoholic;
     }
 
 }

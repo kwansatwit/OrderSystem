@@ -4,13 +4,36 @@
  */
 package User_Interface;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import ordersystem.Dessert;
+import ordersystem.DessertDB;
+import ordersystem.Dish;
+import ordersystem.DishDB;
+import ordersystem.Drink;
+import ordersystem.DrinkDB;
+import ordersystem.Pizza;
+import ordersystem.PizzaDB;
+import ordersystem.Sandwich;
+import ordersystem.SandwichDB;
 
 /**
  *
  * @author zhangf2
  */
 public class ProductGUI extends javax.swing.JFrame {
+    
+    String databaseName = "sql5475007";
+    String dbUserName = "sql5475007";
+    String dbPassword = "avlj8CSFyF";
+    
+    PizzaDB pizzaDB = null;
+    DishDB dishDB = null;
+    SandwichDB sandwichDB = null;
+    DrinkDB drinkDB = null;
+    DessertDB dessertDB = null;
 
     /**
      * Creates new form ProductGUI
@@ -203,10 +226,167 @@ public class ProductGUI extends javax.swing.JFrame {
 
     private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
         // TODO add your handling code here:
+        
+        System.out.println("Add clicked!s");
+        
+        String type = foodType.getText();
+        String id = productID.getText();
+        String name = productName.getText();
+        String size = productSize.getText();
+        double price = Double.parseDouble(productPrice.getText());
+        int amountLeft = Integer.parseInt(inventory.getText());
+        
+        System.out.println(type);
+        
+        if(type.equals("Pizza") || type.equals("pizza")){
+            System.out.println(type + " is entered");
+            Pizza pizza = new Pizza(id, name, size, price, amountLeft);
+            
+            pizzaDB = new PizzaDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                pizzaDB.addPizza(pizza);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Pizza has been added successfully to the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Dish") || type.equals("dish")){
+            Dish dish = new Dish(id, name, size, price, amountLeft);
+            
+            dishDB = new DishDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                dishDB.addDish(dish);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Dish has been added successfully to the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Sandwich") || type.equals("sandwich")){
+            Sandwich sandwich = new Sandwich(id, name, size, price, amountLeft);
+            
+            sandwichDB = new SandwichDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                sandwichDB.addSandwich(sandwich);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Sandwich has been added successfully to the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Drink") || type.equals("drink")){
+            Drink drink = new Drink(id, name, size, price, amountLeft);
+            
+            drinkDB = new DrinkDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                drinkDB.addDrink(drink);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Drink has been added successfully to the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Dessert") || type.equals("dessert")){
+            Dessert dessert = new Dessert(id, name, size, price, amountLeft);
+            
+            dessertDB = new DessertDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                dessertDB.addDessert(dessert);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Dessert has been added successfully to the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(this,"Food type is wrong. Please enter a valid food type.");
+        }
+       
     }//GEN-LAST:event_BtnAddActionPerformed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         // TODO add your handling code here:
+        String type = foodType.getText();
+        String id = productID.getText();
+        int amountLeft = Integer.parseInt(inventory.getText());
+        
+        if(type.equals("Pizza") || type.equals("pizza")){
+            
+            
+            pizzaDB = new PizzaDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                pizzaDB.updatePizzaAmount(id, amountLeft);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Pizza amount has been updated successfully in the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Dish") || type.equals("dish")){
+            dishDB = new DishDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                dishDB.updateDishAmount(id, amountLeft);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Dish amount has been updated successfully in the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Sandwich") || type.equals("sandwich")){
+            sandwichDB = new SandwichDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                sandwichDB.updateSandwichAmount(id, amountLeft);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Sandwich amount has been updated successfully in the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Drink") || type.equals("drink")){
+            drinkDB = new DrinkDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                drinkDB.updateDrinkAmount(id, amountLeft);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Drink amount has been updated successfully in the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Dessert") || type.equals("dessert")){
+            dessertDB = new DessertDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                dessertDB.updateDessertAmount(id, amountLeft);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Dessert amount has been updated successfully in the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(this,"Food type is wrong. Please enter a valid food type.");
+        }
+        
     }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
@@ -215,6 +395,74 @@ public class ProductGUI extends javax.swing.JFrame {
 
     private void BtnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRemoveActionPerformed
         // TODO add your handling code here:
+        String type = foodType.getText();
+        String id = productID.getText();
+        
+        if(type.equals("Pizza") || type.equals("pizza")){
+            
+            
+            pizzaDB = new PizzaDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                pizzaDB.deletePizza(id);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Pizza has been deleted successfully from the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Dish") || type.equals("dish")){
+            dishDB = new DishDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                dishDB.deleteDish(id);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Dish has been deleted successfully from the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Sandwich") || type.equals("sandwich")){
+            sandwichDB = new SandwichDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                sandwichDB.deleteSandwich(id);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Sandwich has been deleted successfully from the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Drink") || type.equals("drink")){
+            drinkDB = new DrinkDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                drinkDB.deleteDrink(id);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Drink has been deleted successfully from the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if(type.equals("Dessert") || type.equals("dessert")){
+            dessertDB = new DessertDB(databaseName, dbUserName, dbPassword);
+            
+            try {
+                dessertDB.deleteDessert(id);
+                clearTexts();
+                JOptionPane.showMessageDialog(this,"Dessert has been deleted successfully from the database.");
+            } catch (Exception ex) {
+                Logger.getLogger(ProductGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(this,"Food type is wrong. Please enter a valid food type.");
+        }
     }//GEN-LAST:event_BtnRemoveActionPerformed
 
     private void inventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryActionPerformed
@@ -224,7 +472,15 @@ public class ProductGUI extends javax.swing.JFrame {
     private void foodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foodTypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_foodTypeActionPerformed
-
+    
+    private void clearTexts(){
+        foodType.setText("");
+        productID.setText("");
+        productName.setText("");
+        productSize.setText("");
+        productPrice.setText("");
+        inventory.setText("");
+    }
     /**
      * @param args the command line arguments
      */

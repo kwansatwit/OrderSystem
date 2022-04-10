@@ -61,9 +61,8 @@ public class PizzaDB {
                 String size = rs.getString("size");
                 double price = rs.getDouble("price");
                 int amountLeft = rs.getInt("amountLeft");
-                String sauce = rs.getString("sauce");
                 // creating a new pizza object
-                Pizza pizza = new Pizza(id, name, size, sauce, price, amountLeft);
+                Pizza pizza = new Pizza(id, name, size, price, amountLeft);
                 // adding the pizza to the list
                 pizzas.add(pizza);
             }
@@ -90,7 +89,7 @@ public class PizzaDB {
             //con = dataSource.getConnection();
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
-            //create sql to get the contact from the database
+            //create sql to get the pizza from the database
             String sql = "select * from PIZZA where PizzaID=?";
             //create prepared statement
             st = con.prepareStatement(sql);
@@ -142,6 +141,91 @@ public class PizzaDB {
             st.execute();
             
             System.out.println("amount updated!");
+
+        } finally {
+            close(con, st, null);
+        }
+    }
+    
+    /**
+     * method that add pizza to the database.
+     * @param Pizza
+     * @throws Exception 
+     */
+    public void addPizza(Pizza pizza) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            //con = dataSource.getConnection();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //creating the statement
+            String sql = "insert into PIZZA"
+                    + "(PizzaID,name,size,price,amountLeft)"
+                    + "values(?,?,?,?,?)";
+            st = con.prepareStatement(sql);
+            
+            // inserting pizza data into the database.
+            st.setString(1, pizza.getId());
+            st.setString(2, pizza.getName());
+            st.setString(3, pizza.getSize());
+            st.setDouble(4, pizza.getPrice());
+            st.setInt(5, pizza.getAmountLeft());
+            st.execute();
+        } finally {
+            // Closing  the connection.
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that deletes a specific pizza from the database.
+     * @param pizzaID
+     * @throws Exception 
+     */
+    public void deletePizza(String pizzaID) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //create sql to delete the pizza from the database
+            String sql = "delete  from PIZZA where PizzaID=?";
+            //create prepared statement
+            st = con.prepareStatement(sql);
+            //set parameters
+            st.setString(1, pizzaID);
+            //execute statement
+            st.execute();
+
+        } finally {
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that updates a specific pizza amount left in the database.
+     * @param amount
+     * @throws Exception 
+     */
+    public void updatePizzaAmount(String id, int amount) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            String sql = "update PIZZA "
+                    + "set amountLeft=? where PizzaID=?";
+            st = con.prepareStatement(sql);
+
+            st.setInt(1, amount);
+            st.setString(2, id);
+            st.execute();
 
         } finally {
             close(con, st, null);

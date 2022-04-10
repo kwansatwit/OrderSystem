@@ -58,11 +58,10 @@ public class DessertDB {
                 String id = rs.getString("DessertID");
                 String name = rs.getString("name");
                 String size = rs.getString("size");
-                int calories = rs.getInt("calories");
                 double price = rs.getDouble("price");
                 int amountLeft = rs.getInt("amountLeft");
                 // creating a new dessert object
-                Dessert dessert = new Dessert(id, name, size, calories, price, amountLeft);
+                Dessert dessert = new Dessert(id, name, size, price, amountLeft);
                 // adding the dessert to the list
                 desserts.add(dessert);
             }
@@ -141,6 +140,91 @@ public class DessertDB {
             st.execute();
             
             System.out.println("amount updated!");
+
+        } finally {
+            close(con, st, null);
+        }
+    }
+    
+    /**
+     * method that add dessert to the database.
+     * @param Dessert
+     * @throws Exception 
+     */
+    public void addDessert(Dessert dessert) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            //con = dataSource.getConnection();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //creating the statement
+            String sql = "insert into DESSERT"
+                    + "(DessertID,name,size,price,amountLeft)"
+                    + "values(?,?,?,?,?)";
+            st = con.prepareStatement(sql);
+            
+            // inserting dessert data into the database.
+            st.setString(1, dessert.getId());
+            st.setString(2, dessert.getName());
+            st.setString(3, dessert.getSize());
+            st.setDouble(4, dessert.getPrice());
+            st.setInt(5, dessert.getAmountLeft());
+            st.execute();
+        } finally {
+            // Closing  the connection.
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that deletes a specific dessert from the database.
+     * @param dessertID
+     * @throws Exception 
+     */
+    public void deleteDessert(String dessertID) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //create sql to delete the dessert from the database
+            String sql = "delete  from DESSERT where DessertID=?";
+            //create prepared statement
+            st = con.prepareStatement(sql);
+            //set parameters
+            st.setString(1, dessertID);
+            //execute statement
+            st.execute();
+
+        } finally {
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that updates a specific dessert amount left in the database.
+     * @param amount
+     * @throws Exception 
+     */
+    public void updateDessertAmount(String id, int amount) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            String sql = "update DESSERT "
+                    + "set amountLeft=? where DessertID=?";
+            st = con.prepareStatement(sql);
+
+            st.setInt(1, amount);
+            st.setString(2, id);
+            st.execute();
 
         } finally {
             close(con, st, null);

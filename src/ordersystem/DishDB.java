@@ -146,6 +146,91 @@ public class DishDB {
             close(con, st, null);
         }
     }
+    
+    /**
+     * method that add dish to the database.
+     * @param Dish
+     * @throws Exception 
+     */
+    public void addDish(Dish dish) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            //con = dataSource.getConnection();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //creating the statement
+            String sql = "insert into DISH"
+                    + "(DishID,name,size,price,amountLeft)"
+                    + "values(?,?,?,?,?)";
+            st = con.prepareStatement(sql);
+            
+            // inserting dish data into the database.
+            st.setString(1, dish.getId());
+            st.setString(2, dish.getName());
+            st.setString(3, dish.getSize());
+            st.setDouble(4, dish.getPrice());
+            st.setInt(5, dish.getAmountLeft());
+            st.execute();
+        } finally {
+            // Closing  the connection.
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that deletes a specific dish from the database.
+     * @param dishID
+     * @throws Exception 
+     */
+    public void deleteDish(String dishID) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //create sql to delete the dish from the database
+            String sql = "delete  from DISH where DishID=?";
+            //create prepared statement
+            st = con.prepareStatement(sql);
+            //set parameters
+            st.setString(1, dishID);
+            //execute statement
+            st.execute();
+
+        } finally {
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that updates a specific dish amount left in the database.
+     * @param amount
+     * @throws Exception 
+     */
+    public void updateDishAmount(String id, int amount) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            String sql = "update DISH "
+                    + "set amountLeft=? where DishID=?";
+            st = con.prepareStatement(sql);
+
+            st.setInt(1, amount);
+            st.setString(2, id);
+            st.execute();
+
+        } finally {
+            close(con, st, null);
+        }
+    }
 
     /**
      * method that close the connection.

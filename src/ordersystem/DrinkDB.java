@@ -58,11 +58,10 @@ public class DrinkDB {
                 String id = rs.getString("DrinkID");
                 String name = rs.getString("name");
                 String size = rs.getString("size");
-                boolean isAlcoholic = rs.getBoolean("isAlcoholic");
                 double price = rs.getDouble("price");
                 int amountLeft = rs.getInt("amountLeft");
                 // creating a new drink object
-                Drink drink = new Drink(id, name, size, isAlcoholic, price, amountLeft);
+                Drink drink = new Drink(id, name, size, price, amountLeft);
                 // adding the drink to the list
                 drinks.add(drink);
             }
@@ -141,6 +140,91 @@ public class DrinkDB {
             st.execute();
             
             System.out.println("amount updated!");
+
+        } finally {
+            close(con, st, null);
+        }
+    }
+    
+    /**
+     * method that add drink to the database.
+     * @param Drink
+     * @throws Exception 
+     */
+    public void addDrink(Drink drink) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            //con = dataSource.getConnection();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //creating the statement
+            String sql = "insert into DRINK"
+                    + "(DrinkID,name,size,price,amountLeft)"
+                    + "values(?,?,?,?,?)";
+            st = con.prepareStatement(sql);
+            
+            // inserting drink data into the database.
+            st.setString(1, drink.getId());
+            st.setString(2, drink.getName());
+            st.setString(3, drink.getSize());
+            st.setDouble(4, drink.getPrice());
+            st.setInt(5, drink.getAmountLeft());
+            st.execute();
+        } finally {
+            // Closing  the connection.
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that deletes a specific drink from the database.
+     * @param drinkID
+     * @throws Exception 
+     */
+    public void deleteDrink(String drinkID) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            //create sql to delete the drink from the database
+            String sql = "delete  from DRINK where DrinkID=?";
+            //create prepared statement
+            st = con.prepareStatement(sql);
+            //set parameters
+            st.setString(1, drinkID);
+            //execute statement
+            st.execute();
+
+        } finally {
+            close(con, st, null);
+        }
+
+    }
+    
+    /**
+     * method that updates a specific drink amount left in the database.
+     * @param amount
+     * @throws Exception 
+     */
+    public void updateDrinkAmount(String id, int amount) throws Exception {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net/" + databaseName, username, password);
+            String sql = "update DRINK "
+                    + "set amountLeft=? where DrinkID=?";
+            st = con.prepareStatement(sql);
+
+            st.setInt(1, amount);
+            st.setString(2, id);
+            st.execute();
 
         } finally {
             close(con, st, null);

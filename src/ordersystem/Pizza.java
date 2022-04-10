@@ -11,20 +11,11 @@ package ordersystem;
  */
 public class Pizza extends Food {
 
-    private String sauce;
-
-    public Pizza(String id, String name, String size, String sauce, double price, int amountLeft) {
+    public Pizza(String id, String name, String size, double price, int amountLeft) {
         super(id, name, size, price, amountLeft);
-        this.sauce = sauce;
 
     }
-    public String getSauce() {
-        return sauce;
-    }
-
-    public void setSauce(String sauce) {
-        this.sauce = sauce;
-    }
+    
 
 
     

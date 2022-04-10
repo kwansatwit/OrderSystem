@@ -12,18 +12,9 @@ package ordersystem;
 public class Dessert extends Food {
     private int calories;
 
-    public Dessert(String id, String name, String size, int calories, double price, int amountLeft) {
+    public Dessert(String id, String name, String size, double price, int amountLeft) {
         super(id, name, size, price, amountLeft);
-        this.calories = calories;
 
-    }
-
-    public int getSauce() {
-        return calories;
-    }
-
-    public void setSauce(int calories) {
-        this.calories = calories;
     }
     
 }

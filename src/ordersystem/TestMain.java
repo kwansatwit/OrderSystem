@@ -87,9 +87,9 @@ public class TestMain {
         
         System.out.println(cDB.isCustomer("6761223173"));
         
-        Pizza pizza = new Pizza("sadadss", "pepperoni pizza", "M", "tomato sauce", 14.99, 290);
+        Pizza pizza = new Pizza("sadadss", "pepperoni pizza", "M", 14.99, 290);
         Dish dish = new Dish("khhj", "Lasagna", "L", 22.45, 190);
-        Drink drink = new Drink("dsadads", "Margarita", "M", true, 60.56, 78);
+        Drink drink = new Drink("dsadads", "Margarita", "M", 60.56, 78);
         
         //System.out.println(pizza.toString());
         
