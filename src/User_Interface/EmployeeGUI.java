@@ -6,6 +6,7 @@ package User_Interface;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import ordersystem.Employee;
 import ordersystem.EmployeeDB;
 
@@ -263,6 +264,19 @@ public class EmployeeGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameActionPerformed
+      
+    }//GEN-LAST:event_firstNameActionPerformed
+
+    private void accessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accessActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accessActionPerformed
+
+    private void BtnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReturnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnReturnActionPerformed
+
+    private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
+        // TODO add your handling code here:
         EmployeeGUI employeeGUI = new EmployeeGUI();
         String first_name = firstName.getText();
         String last_name = lastName.getText();
@@ -289,7 +303,10 @@ public class EmployeeGUI extends javax.swing.JFrame {
         try {
             EmployeeDB addEmp = new EmployeeDB(databaseName, dbUserName, dbPassword);
             addEmp.addEmployee(employee);
-            System.out.println("The Employee was added to the database successfully");
+            //System.out.println("The Employee was added to the database successfully");
+            JOptionPane.showMessageDialog(this,"Employee has been created successfully" + "\n" +
+                    "Username: " + employee.getUserName() + "\n" +
+                    "Password: " + employee.getPassword());
             //employeeGUI.setVisible(false);
             firstName.setText("");
             lastName.setText("");
@@ -303,19 +320,6 @@ public class EmployeeGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(EmployeeGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_firstNameActionPerformed
-
-    private void accessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accessActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accessActionPerformed
-
-    private void BtnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReturnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnReturnActionPerformed
-
-    private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_BtnAddActionPerformed
 
     private void lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameActionPerformed

@@ -13,7 +13,7 @@ import ordersystem.CustomerDB;
 
 /**
  *
- * @author zhangf2
+ * @author zhangf2, Ahmed Diab
  */
 public class CustomerGUI extends javax.swing.JFrame {
     
