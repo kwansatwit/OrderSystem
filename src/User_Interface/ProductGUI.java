@@ -56,7 +56,6 @@ public class ProductGUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         BtnAdd = new javax.swing.JButton();
         BtnEdit = new javax.swing.JButton();
-        BtnSave = new javax.swing.JButton();
         BtnRemove = new javax.swing.JButton();
         foodType = new javax.swing.JTextField();
         productID = new javax.swing.JTextField();
@@ -73,7 +72,6 @@ public class ProductGUI extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(618, 531));
 
         jPanel1.setLayout(null);
 
@@ -94,7 +92,7 @@ public class ProductGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnAdd);
-        BtnAdd.setBounds(460, 130, 110, 40);
+        BtnAdd.setBounds(460, 170, 110, 40);
 
         BtnEdit.setBackground(new java.awt.Color(204, 204, 204));
         BtnEdit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -107,20 +105,7 @@ public class ProductGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnEdit);
-        BtnEdit.setBounds(460, 210, 110, 40);
-
-        BtnSave.setBackground(new java.awt.Color(204, 204, 204));
-        BtnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BtnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login.png"))); // NOI18N
-        BtnSave.setText("Save");
-        BtnSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BtnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSaveActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnSave);
-        BtnSave.setBounds(460, 290, 110, 40);
+        BtnEdit.setBounds(460, 270, 110, 40);
 
         BtnRemove.setBackground(new java.awt.Color(204, 204, 204));
         BtnRemove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -133,7 +118,7 @@ public class ProductGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnRemove);
-        BtnRemove.setBounds(460, 380, 110, 40);
+        BtnRemove.setBounds(460, 370, 110, 40);
 
         foodType.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         foodType.addActionListener(new java.awt.event.ActionListener() {
@@ -213,11 +198,15 @@ public class ProductGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -389,10 +378,6 @@ public class ProductGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnEditActionPerformed
 
-    private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSaveActionPerformed
-
     private void BtnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRemoveActionPerformed
         // TODO add your handling code here:
         String type = foodType.getText();
@@ -520,7 +505,6 @@ public class ProductGUI extends javax.swing.JFrame {
     private javax.swing.JButton BtnAdd;
     private javax.swing.JButton BtnEdit;
     private javax.swing.JButton BtnRemove;
-    private javax.swing.JButton BtnSave;
     private javax.swing.JLabel background;
     private javax.swing.JTextField foodType;
     private javax.swing.JTextField inventory;

@@ -32,6 +32,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -42,6 +43,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        userName = new javax.swing.JTextField();
         firstName = new javax.swing.JTextField();
         lastName = new javax.swing.JTextField();
         birth = new javax.swing.JTextField();
@@ -60,64 +62,78 @@ public class EmployeeGUI extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Username :");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(60, 120, 100, 40);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("First Name :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(60, 150, 120, 40);
+        jLabel1.setBounds(60, 190, 120, 40);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Last Name :");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(60, 210, 120, 40);
+        jLabel2.setBounds(60, 260, 120, 40);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Date of Birth :");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(60, 280, 120, 40);
+        jLabel3.setBounds(60, 320, 120, 40);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Address :");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(60, 350, 120, 40);
+        jLabel4.setBounds(60, 380, 90, 40);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Phone :");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(440, 150, 120, 40);
+        jLabel5.setBounds(440, 120, 80, 40);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Email :");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(440, 210, 120, 40);
+        jLabel6.setBounds(440, 190, 70, 40);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Position :");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(440, 280, 120, 40);
+        jLabel7.setBounds(440, 260, 90, 40);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Access :");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(440, 350, 120, 40);
+        jLabel8.setBounds(440, 320, 80, 40);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Employee Management");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(230, 60, 410, 50);
+        jLabel9.setBounds(220, 30, 430, 50);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/admin.png"))); // NOI18N
-        jLabel10.setText("jLabel10");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(70, 40, 120, 90);
+        jLabel10.setBounds(100, 30, 62, 70);
+
+        userName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(userName);
+        userName.setBounds(200, 120, 190, 31);
 
         firstName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         firstName.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +142,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(firstName);
-        firstName.setBounds(200, 150, 190, 31);
+        firstName.setBounds(200, 190, 190, 31);
 
         lastName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lastName.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +151,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lastName);
-        lastName.setBounds(200, 210, 190, 31);
+        lastName.setBounds(200, 260, 190, 31);
 
         birth.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         birth.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +160,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(birth);
-        birth.setBounds(200, 280, 190, 31);
+        birth.setBounds(200, 320, 190, 31);
 
         address.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         address.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +169,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(address);
-        address.setBounds(200, 360, 190, 31);
+        address.setBounds(200, 380, 190, 31);
 
         phone.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         phone.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +178,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(phone);
-        phone.setBounds(560, 150, 190, 31);
+        phone.setBounds(540, 120, 190, 31);
 
         email.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         email.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +187,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(email);
-        email.setBounds(560, 220, 190, 31);
+        email.setBounds(540, 190, 190, 31);
 
         position.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         position.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +196,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(position);
-        position.setBounds(560, 290, 190, 31);
+        position.setBounds(540, 260, 190, 31);
 
         access.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         access.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +205,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(access);
-        access.setBounds(560, 360, 190, 31);
+        access.setBounds(540, 330, 190, 31);
 
         BtnAdd.setBackground(new java.awt.Color(204, 204, 204));
         BtnAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -354,6 +370,10 @@ public class EmployeeGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnRemoveActionPerformed
 
+    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -402,6 +422,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
     private javax.swing.JTextField firstName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -414,5 +435,6 @@ public class EmployeeGUI extends javax.swing.JFrame {
     private javax.swing.JTextField lastName;
     private javax.swing.JTextField phone;
     private javax.swing.JTextField position;
+    private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
 }

@@ -123,7 +123,7 @@ public class ReportGUI extends javax.swing.JFrame {
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         TotalPrice.setBackground(new java.awt.Color(204, 204, 204));
-        TotalPrice.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        TotalPrice.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         TotalPrice.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         backToMenuButton.setBackground(new java.awt.Color(204, 204, 204));
