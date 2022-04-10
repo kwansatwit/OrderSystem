@@ -21,7 +21,7 @@ import ordersystem.SandwichDB;
 
 /**
  *
- * @author zhangf2
+ * @author zhangf2, Ahmed Diab
  */
 public class ProductGUI extends javax.swing.JFrame {
     

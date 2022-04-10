@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 
 /**
  *
- * @author zhangf2
+ * @author zhangf2, Ahmed Diab
  */
 public class PrintGUI extends javax.swing.JFrame {
     /**
