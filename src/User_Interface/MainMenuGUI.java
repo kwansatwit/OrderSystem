@@ -3,10 +3,12 @@ package User_Interface;
  fix the UI part, this page can close the sub page without close the main mneu page
 */
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.List;
 import java.sql.Date; 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -39,6 +41,8 @@ import ordersystem.SandwichDB;
  * 4/5/2022 - Ha
  * modified button function based on permission
  * created a constructor to get value from login page
+ * 4/13/2022 - Ha
+ * added button link to handbook website
  */
 public class MainMenuGUI extends javax.swing.JFrame {
     
@@ -120,6 +124,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
         save = new javax.swing.JButton();
         employee_management = new javax.swing.JButton();
         logout = new javax.swing.JButton();
+        handbook = new javax.swing.JButton();
         food_management = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         customer_check = new javax.swing.JButton();
@@ -137,7 +142,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
         management.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         management.setForeground(new java.awt.Color(255, 255, 255));
-        management.setText("Management :");
+        management.setText("Management");
         jPanel1.add(management);
         management.setBounds(590, 40, 120, 50);
 
@@ -295,6 +300,16 @@ public class MainMenuGUI extends javax.swing.JFrame {
         });
         jPanel1.add(logout);
         logout.setBounds(960, 31, 90, 29);
+
+        handbook.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        handbook.setText("Handbook");
+        handbook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                handbookActionPerformed(evt);
+            }
+        });
+        jPanel1.add(handbook);
+        handbook.setBounds(850, 31, 100, 29);
 
         food_management.setBackground(new java.awt.Color(204, 204, 204));
         food_management.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -751,6 +766,15 @@ public class MainMenuGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_reportActionPerformed
 
+    private void handbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_handbookActionPerformed
+        // TODO add your handling code here:
+      try{
+          Desktop.getDesktop().browse(new URL("https://drive.google.com/file/d/11EHC9ErVRBNDW2B9AwQ--cGRgbZcF3iB/view?usp=sharing").toURI());
+      }catch(Exception e){
+          System.out.println(e.toString());
+      }
+    }//GEN-LAST:event_handbookActionPerformed
+
      public void close(){
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
@@ -919,6 +943,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     private javax.swing.JButton drink;
     private javax.swing.JButton employee_management;
     private javax.swing.JButton food_management;
+    private javax.swing.JButton handbook;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_menu1;
     private javax.swing.JPanel jPanel1;

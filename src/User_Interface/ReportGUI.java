@@ -271,11 +271,17 @@ public class ReportGUI extends javax.swing.JFrame {
 
     private void backToMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuButtonActionPerformed
         // TODO add your handling code here:
-        MainMenuGUI menu = new MainMenuGUI();         
-        menu.setVisible(true);
+        // MainMenuGUI menu = new MainMenuGUI();         
+        // menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backToMenuButtonActionPerformed
-
+    
+    /**
+     * 
+     * @param orders 
+     * @return total price amount
+     * sum all the price
+     */
     private double getTotalSalePrice(ArrayList<SalesReport> orders){
         double amount = 0;
         
@@ -286,6 +292,14 @@ public class ReportGUI extends javax.swing.JFrame {
         return amount;
     }
 
+    /**
+     * 
+     * @param month 
+     * @param year
+     * @return day
+     * get the month day
+     * calculate the Feb last day. 
+     */
     private int findDay(int month, int year) {
         int day = 0;
         //1,3,5,7,8,10,12
@@ -308,6 +322,9 @@ public class ReportGUI extends javax.swing.JFrame {
         return day;
     }
 
+    /**
+     * load data and display to table
+     */
     public void addRowToJTable() {
 
         DefaultTableModel model = (DefaultTableModel) viewReport.getModel();
