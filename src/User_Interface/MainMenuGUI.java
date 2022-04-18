@@ -480,6 +480,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
         employee_management.setVisible(false);
         report.setVisible(false);
         management.setVisible(false);
+        
     }
     
     private void food_managementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_food_managementActionPerformed

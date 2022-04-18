@@ -291,6 +291,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
 
     private void BtnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReturnActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_BtnReturnActionPerformed
 
     private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
